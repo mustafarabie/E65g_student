@@ -74,18 +74,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZs-tw-k1r">
                                 <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsa-tT-SiT" userLabel="Split1">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
-                                        <color key="backgroundColor" red="0.1764705882352941" green="0.53725490196078429" blue="0.93725490196078431" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0IU-e4-FJq" userLabel="Split2">
+                                        <rect key="frame" x="0.0" y="249.5" width="320" height="249.5"/>
+                                        <color key="backgroundColor" red="0.0" green="0.63921568630000003" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0IU-e4-FJq" userLabel="Split2">
-                                        <rect key="frame" x="0.0" y="249.5" width="320" height="249.5"/>
-                                        <color key="backgroundColor" red="0.0" green="0.63921568630000003" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsa-tT-SiT" userLabel="Split1">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
+                                        <color key="backgroundColor" red="0.1764705882352941" green="0.53725490196078429" blue="0.93725490196078431" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
@@ -99,25 +99,59 @@
                                     <constraint firstItem="0IU-e4-FJq" firstAttribute="height" secondItem="RZs-tw-k1r" secondAttribute="height" multiplier="0.5" id="2iI-cC-P1R"/>
                                     <constraint firstAttribute="trailing" secondItem="0IU-e4-FJq" secondAttribute="trailing" id="5gM-Np-LYc"/>
                                     <constraint firstAttribute="trailing" secondItem="Qsa-tT-SiT" secondAttribute="trailing" id="73L-YT-7sr"/>
+                                    <constraint firstItem="Qsa-tT-SiT" firstAttribute="leading" secondItem="RZs-tw-k1r" secondAttribute="leading" id="Cdy-A8-Gka"/>
                                     <constraint firstItem="0IU-e4-FJq" firstAttribute="leading" secondItem="RZs-tw-k1r" secondAttribute="leading" id="G1B-bB-v3p"/>
+                                    <constraint firstItem="0IU-e4-FJq" firstAttribute="top" secondItem="RZs-tw-k1r" secondAttribute="top" id="GVb-aZ-RYZ"/>
+                                    <constraint firstItem="Qsa-tT-SiT" firstAttribute="width" secondItem="RZs-tw-k1r" secondAttribute="width" multiplier="0.5" id="If8-AV-dvT"/>
+                                    <constraint firstItem="0IU-e4-FJq" firstAttribute="width" secondItem="RZs-tw-k1r" secondAttribute="width" multiplier="0.5" id="Kd8-4N-yYu"/>
+                                    <constraint firstAttribute="bottom" secondItem="0IU-e4-FJq" secondAttribute="bottom" id="Kvc-ce-cGd"/>
+                                    <constraint firstAttribute="trailing" secondItem="0IU-e4-FJq" secondAttribute="trailing" id="LAs-rZ-J9Y"/>
                                     <constraint firstItem="Qsa-tT-SiT" firstAttribute="height" secondItem="RZs-tw-k1r" secondAttribute="height" multiplier="0.5" id="Q0N-Fx-OnW"/>
+                                    <constraint firstItem="Qsa-tT-SiT" firstAttribute="top" secondItem="RZs-tw-k1r" secondAttribute="top" id="SEe-lG-wEa"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qsa-tT-SiT" secondAttribute="bottom" id="V4r-jx-gua"/>
+                                    <constraint firstItem="0IU-e4-FJq" firstAttribute="leading" secondItem="Qsa-tT-SiT" secondAttribute="trailing" id="VUJ-Us-JXJ"/>
                                     <constraint firstItem="0IU-e4-FJq" firstAttribute="top" secondItem="Qsa-tT-SiT" secondAttribute="bottom" id="W6x-Cg-Uex"/>
                                     <constraint firstItem="0IU-e4-FJq" firstAttribute="top" secondItem="Qsa-tT-SiT" secondAttribute="bottom" id="YOq-6P-yf1"/>
                                     <constraint firstItem="Qsa-tT-SiT" firstAttribute="top" secondItem="RZs-tw-k1r" secondAttribute="top" id="bmj-4N-NbC"/>
                                     <constraint firstItem="Qsa-tT-SiT" firstAttribute="leading" secondItem="RZs-tw-k1r" secondAttribute="leading" id="g2y-sc-fT3"/>
+                                    <constraint firstItem="0IU-e4-FJq" firstAttribute="leading" secondItem="Qsa-tT-SiT" secondAttribute="trailing" id="uDh-q3-xS1"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="73L-YT-7sr"/>
+                                        <exclude reference="Cdy-A8-Gka"/>
+                                        <exclude reference="If8-AV-dvT"/>
                                         <exclude reference="Q0N-Fx-OnW"/>
+                                        <exclude reference="SEe-lG-wEa"/>
+                                        <exclude reference="V4r-jx-gua"/>
                                         <exclude reference="bmj-4N-NbC"/>
                                         <exclude reference="g2y-sc-fT3"/>
                                         <exclude reference="15n-UV-HBx"/>
                                         <exclude reference="2iI-cC-P1R"/>
                                         <exclude reference="5gM-Np-LYc"/>
                                         <exclude reference="G1B-bB-v3p"/>
+                                        <exclude reference="GVb-aZ-RYZ"/>
+                                        <exclude reference="Kd8-4N-yYu"/>
+                                        <exclude reference="Kvc-ce-cGd"/>
+                                        <exclude reference="LAs-rZ-J9Y"/>
+                                        <exclude reference="VUJ-Us-JXJ"/>
                                         <exclude reference="W6x-Cg-Uex"/>
                                         <exclude reference="YOq-6P-yf1"/>
+                                        <exclude reference="uDh-q3-xS1"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Cdy-A8-Gka"/>
+                                        <include reference="If8-AV-dvT"/>
+                                        <include reference="SEe-lG-wEa"/>
+                                        <include reference="V4r-jx-gua"/>
+                                        <include reference="GVb-aZ-RYZ"/>
+                                        <include reference="Kd8-4N-yYu"/>
+                                        <include reference="Kvc-ce-cGd"/>
+                                        <include reference="LAs-rZ-J9Y"/>
+                                        <include reference="VUJ-Us-JXJ"/>
+                                        <include reference="uDh-q3-xS1"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
@@ -159,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="358.0985915492958"/>
+            <point key="canvasLocation" x="750" y="356.25"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
