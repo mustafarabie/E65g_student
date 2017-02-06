@@ -85,7 +85,54 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsa-tT-SiT" userLabel="Split1">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJW-KG-21w" userLabel="Generation">
+                                                <rect key="frame" x="76" y="20" width="168" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="PiT-fe-mg1"/>
+                                                    <constraint firstAttribute="width" constant="168" id="y4m-Xy-KJH"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UMp-Dh-s0v" userLabel="Grid Size">
+                                                <rect key="frame" x="101" y="67" width="118" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="114" id="LbM-Be-UHs"/>
+                                                    <constraint firstAttribute="height" constant="30" id="NGu-5v-66R"/>
+                                                </constraints>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="knT-mr-O3S" userLabel="Frames/Secons">
+                                                <rect key="frame" x="101" y="116" width="118" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="TT5-QL-rTM"/>
+                                                    <constraint firstAttribute="width" constant="114" id="hnO-RF-Mk6"/>
+                                                </constraints>
+                                            </slider>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iyU-eE-27Q" userLabel="Reset">
+                                                <rect key="frame" x="137" y="169" width="46" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="46" id="PCk-u6-pD6"/>
+                                                    <constraint firstAttribute="height" constant="30" id="W1X-Yx-3NO"/>
+                                                </constraints>
+                                                <state key="normal" title="Reset">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.1764705882352941" green="0.53725490196078429" blue="0.93725490196078431" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="knT-mr-O3S" firstAttribute="top" secondItem="UMp-Dh-s0v" secondAttribute="bottom" constant="19" id="7wQ-F1-ZhY"/>
+                                            <constraint firstItem="UMp-Dh-s0v" firstAttribute="top" secondItem="oJW-KG-21w" secondAttribute="bottom" constant="17" id="Rhu-F5-y8m"/>
+                                            <constraint firstItem="knT-mr-O3S" firstAttribute="centerX" secondItem="Qsa-tT-SiT" secondAttribute="centerX" id="ekH-5N-KXh"/>
+                                            <constraint firstItem="UMp-Dh-s0v" firstAttribute="centerX" secondItem="Qsa-tT-SiT" secondAttribute="centerX" id="fjI-oJ-fZL"/>
+                                            <constraint firstItem="iyU-eE-27Q" firstAttribute="centerX" secondItem="Qsa-tT-SiT" secondAttribute="centerX" id="hzU-z9-hV2"/>
+                                            <constraint firstItem="oJW-KG-21w" firstAttribute="top" secondItem="Qsa-tT-SiT" secondAttribute="top" constant="20" id="qQi-co-g7E"/>
+                                            <constraint firstItem="oJW-KG-21w" firstAttribute="top" secondItem="Qsa-tT-SiT" secondAttribute="top" constant="20" id="qwo-cM-uLx"/>
+                                            <constraint firstItem="oJW-KG-21w" firstAttribute="centerX" secondItem="Qsa-tT-SiT" secondAttribute="centerX" id="uHj-AR-LfQ"/>
+                                            <constraint firstItem="iyU-eE-27Q" firstAttribute="top" secondItem="knT-mr-O3S" secondAttribute="bottom" constant="23" id="zeg-d1-ACQ"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
@@ -193,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="356.25"/>
+            <point key="canvasLocation" x="750" y="355.98591549295776"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
