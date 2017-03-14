@@ -303,21 +303,21 @@ extension Grid {
  */
 // ** Your Problem 11.1 answer goes here **
 /*
- 
+ combins the values specified by the rows and cols in the array
  */
 /*:
  2. what is the return type of reduce2?
  */
 // ** Your Problem 11.2 answer goes here **
 /*
- 
+ int
  */
 /*:
  3. why is there no T parameter here as in map2 above?
  */
 // ** Your Problem 11.3 answer goes here **
 /*
- 
+ no need for generic since we know that the func operats on an array of int
  */
 
 // A function which is useful for counting things in an array of arrays of things
@@ -343,7 +343,7 @@ extension Grid {
     var numLiving: Int {
         return reduce2(self.rows, self.cols) { total, row, col in
             // ** Replace the following line with your Problem 12 code
-            return 0
+            return self.cells[row][col].state == .alive ? total + 1 : total
         }
     }
 }
@@ -375,15 +375,15 @@ extension Grid {
 // Code to initialize a 10x10 grid, set up every cell in the grid
 // and randomly turn each cell on or off.  Uncomment following 4 lines
 // and replace `.empty` with your one line of code
-//var grid = Grid(10, 10) { row, col in 
+var grid = Grid(10, 10) { row, col in 
 //   // ** Your Problem 13 code goes here! **
-//   .empty
-//}
-//grid.numLiving
+    arc4random_uniform(3) == 2 ? .alive : .empty
+}
+grid.numLiving
 
 // ** Your Problem 13 comment goes here! **
 /*
- 
+ our grid is 100 cells, so 1/3 is approximately 33
  */
 /*:
  ## Problem 14:
@@ -409,11 +409,13 @@ extension Grid {
     subscript (row: Int, col: Int) -> Cell? {
         get {
             // ** Your Problem 14 `get` code goes here! replace the following line **
-            return nil
+            guard (0 <= row && row <= self.rows && 0 <= col && col <=  self.cols) else {return nil}
+            return self.cells[row][col]
         }
         set {
             // ** Your Problem 14 `set` code goes here! replace the following line **
-            return
+            guard (0 <= row && row <= self.rows && 0 <= col && col <=  self.cols && newValue != nil) else {return}
+            self.cells[row][col] = newValue!
         }
     }
 }
@@ -426,28 +428,28 @@ extension Grid {
  */
 // Problem 15.1 answer goes here
 /*
- 
+ Cell
  */
 /*:
  2. what the type of `self[row,col]`?
  */
 // Problem 15.2 answer goes here
 /*
- 
+ optional Cell (Cell?)
  */
 /*:
  3. why those two types are different?
  */
 // Problem 15.3 comment goes here
 /*
- 
+ cell must contain a value, where self[row,col] can be a nil value
  */
 /*:
  4. under what circumstances will the `else` clause will be executed?
  */
 // Problem 15.4 comment goes here
 /*
- 
+ self[row,col] is not nil
  */
 /*:
  ## Problem 16:
@@ -459,7 +461,7 @@ extension Grid {
 
 // Problem 16 comment goes here
 /*
- 
+ returns the number of all the living neighbors of the cell specified
  */
 
 /*:
@@ -475,7 +477,7 @@ extension Grid {
 
 // Problem 17 comment goes here
 /*
- 
+ the position of the current cell in the array
  */
 
 /*:
@@ -500,8 +502,7 @@ extension Grid {
             .reduce(0) {
                 guard let neighborCell = self[$1.row, $1.col] else { return $0 }
                 // ** Problem 18 code goes here!  replace the following 2 lines **
-                neighborCell
-                return $0
+                return neighborCell.state.isAlive ? $0 + 1 : $0
         }
     }
 }
@@ -531,7 +532,11 @@ extension Grid {
 extension Grid {
     func nextState(of cell: Cell) -> CellState {
         // ** Problem 19 code goes here! Replace the following line **
-        return .empty
+        switch livingNeighbors(of: cell){
+        case 2, 
+             3 where cell.state.isAlive: return .alive
+        default: return .empty
+        }
     }
 }
 /*:
@@ -544,9 +549,10 @@ extension Grid {
 // An extension to grid to jump to the next state of Conway's GoL
 extension Grid {
     func next() -> Grid {
-        let nextGrid = Grid(rows, cols)
+        var nextGrid = Grid(rows, cols)
         map2(self.rows, self.cols) { (row, col)  in
             // ** Problem 20 code goes here! **
+            nextGrid.cells[row][col].state = self.nextState(of: cells[row][col])
         }
         return nextGrid
     }
@@ -561,7 +567,7 @@ extension Grid {
 
 // ** Your Problem 21 comment goes here! **
 /*
- 
+ the state of the next cell in the grid
  */
 /*:
  ## Problem 22:
@@ -569,30 +575,30 @@ extension Grid {
  Verify that the number living is still in the neighborhood of 33
  If it is not please debug all your code
  */
-//grid = grid.next()
-//grid.numLiving
+grid = grid.next()
+grid.numLiving
 /*:
  It works!
  ## For Fun
  Once you have everything above working, uncomment and think about the following lines of code
  */
-//func gliderInitializer(row: Int, col: Int) -> CellState {
-//    switch (row, col) {
-//    case (0, 1), (1, 2), (2, 0), (2, 1), (2, 2): return .alive
-//    default: return .empty
-//    }
-//}
-//
-//grid = Grid(10, 10, cellInitializer: gliderInitializer)
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
-//grid = grid.next()
-//grid.numLiving
+func gliderInitializer(row: Int, col: Int) -> CellState {
+    switch (row, col) {
+    case (0, 1), (1, 2), (2, 0), (2, 1), (2, 2): return .alive
+    default: return .empty
+    }
+}
+
+grid = Grid(10, 10, cellInitializer: gliderInitializer)
+grid.numLiving
+grid = grid.next()
+grid.numLiving
+grid = grid.next()
+grid.numLiving
+grid = grid.next()
+grid.numLiving
+grid = grid.next()
+grid.numLiving
+grid = grid.next()
+grid.numLiving
 let theEnd = "The End"
