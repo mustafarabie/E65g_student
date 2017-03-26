@@ -22,8 +22,34 @@ public func positionSequence (from: Position, to: Position) -> PositionSequence 
         .flatMap { $0 }
 }
 
-public enum CellState {
-    case alive, empty, born, died
+public enum CellState:String {
+    case alive = "alive"
+    case empty = "empty"
+    case born = "born"
+    case died = "died"
+    
+    public func description()->String{
+        switch self{
+        case .alive: return "alive"
+        case .born: return "born"
+        case .died: return "died"
+        case .empty: return "empty"
+        }
+    }
+    
+    public func allValues()->Array<String>{
+        let retArray = ["alive","empty","born","died"]
+        return retArray
+    }
+    
+    public func toggle(value:CellState)-> CellState{
+        switch value{
+        case .empty, .died:
+             return .alive
+        case .alive, .born:
+             return .empty
+        }
+    }
     
     public var isAlive: Bool {
         switch self {
