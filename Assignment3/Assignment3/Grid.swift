@@ -29,16 +29,12 @@ public enum CellState:String {
     case died = "died"
     
     public func description()->String{
-        switch self{
-        case .alive: return "alive"
-        case .born: return "born"
-        case .died: return "died"
-        case .empty: return "empty"
+        return self.rawValue
         }
-    }
     
     public func allValues()->Array<String>{
-        let retArray = ["alive","empty","born","died"]
+        //let retArray = ["alive","empty","born","died"]
+        let retArray = [CellState.alive.rawValue, CellState.empty.rawValue, CellState.born.rawValue, CellState.empty.rawValue]
         return retArray
     }
     
