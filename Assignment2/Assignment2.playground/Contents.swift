@@ -235,7 +235,11 @@ struct Grid {
 =======
         cells = [[Cell]](repeatElement([Cell](repeatElement(Cell(position:(0,0), state: .empty), count: cols)), count: rows))
         
+<<<<<<< HEAD
 >>>>>>> course/master
+=======
+>>>>>>> 0f991d0f9ae463d81c535df09527a2184f019a84
+>>>>>>> rvsrvs-master
         map2(rows, cols) { row, col in
             cells[row][col].position = (row, col)
             cells[row][col].state = cellInitializer(row, col)
