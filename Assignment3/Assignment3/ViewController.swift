@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var myGridView: GridView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,7 +23,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnStep(_ sender: Any) {
-        
+        myGridView.grid = myGridView.grid.next()
+        myGridView.setNeedsDisplay()
     }
 
 }

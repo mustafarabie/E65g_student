@@ -22,7 +22,7 @@ import UIKit
     @IBInspectable var gridColor = UIColor.cyan
     @IBInspectable var gridWidth: CGFloat = 0.0
     
-    var grid = Grid(20,20)
+    public var grid = Grid(20,20)
     
     override func draw(_ rect: CGRect) {
         
@@ -31,6 +31,27 @@ import UIKit
             height: rect.size.height / CGFloat(self.size)
         )
 
+        //draw circles
+        let base = rect.origin
+        
+        (0...self.size).forEach{ i in
+            (0...self.size).forEach{ j in
+                let origin = CGPoint(
+                    x: base.x + (CGFloat(j) * size.width),
+                    y: base.y + (CGFloat(i) * size.height)
+                )
+                let subRect = CGRect(
+                    origin: origin,
+                    size: size
+                )
+                //draw live circles
+                if (grid[(i,j)].isAlive){
+                    let path = UIBezierPath(ovalIn: subRect)
+                    livingColor.setFill()
+                    path.fill()
+                }
+            }
+        }
         
         //converting size from Int to CGFloats
         let _gridSize = CGFloat(self.size)
@@ -51,26 +72,7 @@ import UIKit
             )
         }
 
-        //draw live circles
-        let base = rect.origin
         
-        (0...self.size).forEach{ i in
-            (0...self.size).forEach{ j in
-                let origin = CGPoint(
-                    x: base.x + (CGFloat(j) * size.width),
-                    y: base.y + (CGFloat(i) * size.height)
-                )
-                let subRect = CGRect(
-                    origin: origin,
-                    size: size
-                )
-                if (grid[(i,j)].isAlive){
-                    let path = UIBezierPath(ovalIn: subRect)
-                    livingColor.setFill()
-                    path.fill()
-                }
-            }
-        }
     }
     
     /* 

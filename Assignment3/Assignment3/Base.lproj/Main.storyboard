@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,9 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wWx-Gs-w0N" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWx-Gs-w0N" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
                                 <rect key="frame" x="67" y="202" width="240" height="263"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="size">
@@ -48,9 +48,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1o-4d-T0e">
-                                <rect key="frame" x="67" y="140" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1o-4d-T0e">
+                                <rect key="frame" x="67" y="164" width="32" height="30"/>
                                 <state key="normal" title="Step"/>
                                 <connections>
                                     <action selector="btnStep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EQG-Fm-tRL"/>
@@ -58,7 +57,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="X1o-4d-T0e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="144" id="5GV-sL-CM2"/>
+                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="leading" secondItem="X1o-4d-T0e" secondAttribute="leading" id="8Xk-Wa-aIb"/>
+                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="MXj-Ir-9Dr"/>
+                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dia-UE-VbZ"/>
+                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="top" secondItem="X1o-4d-T0e" secondAttribute="bottom" constant="8" id="rCN-2T-xNp"/>
+                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rO7-Qh-SfO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="myGridView" destination="wWx-Gs-w0N" id="G7o-sP-gpE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
