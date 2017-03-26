@@ -26,12 +26,18 @@ import UIKit
     
     override func draw(_ rect: CGRect) {
         
+        let size = CGSize(
+            width: rect.size.width / CGFloat(self.size),
+            height: rect.size.height / CGFloat(self.size)
+        )
+
+        
         //converting size from Int to CGFloats
-        let _gridSize = CGFloat(size)
+        let _gridSize = CGFloat(self.size)
         
         //draw lines
         //included the total size in order to draw the outter boundries of the grid
-        (0...size).forEach{
+        (0...self.size).forEach{
             //draw vertical lines
             drawLine(
                 start: CGPoint(x: CGFloat($0)/_gridSize * rect.size.width, y: 0.0),
@@ -44,9 +50,27 @@ import UIKit
                 end: CGPoint(x: rect.size.width, y: CGFloat($0)/_gridSize * rect.size.height)
             )
         }
-        
-        
 
+        //draw live circles
+        let base = rect.origin
+        
+        (0...self.size).forEach{ i in
+            (0...self.size).forEach{ j in
+                let origin = CGPoint(
+                    x: base.x + (CGFloat(j) * size.width),
+                    y: base.y + (CGFloat(i) * size.height)
+                )
+                let subRect = CGRect(
+                    origin: origin,
+                    size: size
+                )
+                if (grid[(i,j)].isAlive){
+                    let path = UIBezierPath(ovalIn: subRect)
+                    livingColor.setFill()
+                    path.fill()
+                }
+            }
+        }
     }
     
     /* 
@@ -74,31 +98,6 @@ import UIKit
     }
     
     
-    /*
-     name   : drawCircle
-     input  : CGPoint start
-     CGPoint end
-     summary: draws a line between the 2, using the color specified by gridColor
-     */
-    func drawCircle(start:CGPoint, end: CGPoint) {
-        let path = UIBezierPath()
-        
-        //set the path's line width to the height of the stroke
-        path.lineWidth = gridWidth
-        
-        //move the initial point of the path
-        //to the start of the horizontal stroke
-        path.move(to: start)
-        
-        //add a point to the path at the end of the stroke
-        path.addLine(to: end)
-        
-        //draw the stroke
-        gridColor.setStroke()
-        path.stroke()
-        
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         lastTouchedPosition = process(touches: touches)
     }
@@ -110,7 +109,7 @@ import UIKit
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         lastTouchedPosition = nil
     }
-    //TODO: FIX
+   
     // Updated since class
     typealias Position = (row: Int, col: Int)
     var lastTouchedPosition: Position?
@@ -122,7 +121,7 @@ import UIKit
             || lastTouchedPosition?.col != pos.col
             else { return pos }
         
-        //grid[pos.row][pos.col] = grid[pos.row][pos.col] ? false : true
+        grid[pos] = grid[pos].toggle(value: grid[pos])
         setNeedsDisplay()
         return pos
     }
