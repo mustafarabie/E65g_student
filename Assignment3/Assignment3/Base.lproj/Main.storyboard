@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,53 +17,69 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Main">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWx-Gs-w0N" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
-                                <rect key="frame" x="67" y="202" width="240" height="263"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WtD-fH-GaK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWx-Gs-w0N" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
+                                        <rect key="frame" x="68" y="214" width="240" height="240"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="YNH-Ky-kX8"/>
+                                            <constraint firstAttribute="height" constant="240" id="a7W-Z3-G1z"/>
+                                            <constraint firstAttribute="width" secondItem="wWx-Gs-w0N" secondAttribute="height" multiplier="1:1" id="qLv-lt-rI0"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="size">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
+                                                <color key="value" red="0.0" green="0.50196078431372548" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
+                                                <color key="value" red="0.0" green="0.50196078431372548" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                                <color key="value" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
+                                                <color key="value" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="gridColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="gridWidth">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1o-4d-T0e">
+                                        <rect key="frame" x="68" y="175" width="239" height="30"/>
+                                        <state key="normal" title="Step"/>
+                                        <connections>
+                                            <action selector="btnStep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EQG-Fm-tRL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="size">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
-                                        <color key="value" red="0.0" green="0.50196078431372548" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
-                                        <color key="value" red="0.0" green="0.50196078431372548" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
-                                        <color key="value" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
-                                        <color key="value" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="gridColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="gridWidth">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <constraints>
+                                    <constraint firstItem="wWx-Gs-w0N" firstAttribute="centerY" secondItem="WtD-fH-GaK" secondAttribute="centerY" id="azO-Kf-AsP"/>
+                                    <constraint firstItem="wWx-Gs-w0N" firstAttribute="top" secondItem="X1o-4d-T0e" secondAttribute="bottom" constant="9" id="iuW-oF-jnM"/>
+                                    <constraint firstItem="X1o-4d-T0e" firstAttribute="leading" secondItem="wWx-Gs-w0N" secondAttribute="leading" id="pkM-vP-qTB"/>
+                                    <constraint firstItem="X1o-4d-T0e" firstAttribute="centerX" secondItem="WtD-fH-GaK" secondAttribute="centerX" id="rIY-I6-FBZ"/>
+                                    <constraint firstItem="wWx-Gs-w0N" firstAttribute="centerX" secondItem="WtD-fH-GaK" secondAttribute="centerX" id="y9H-eF-GAI"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1o-4d-T0e">
-                                <rect key="frame" x="67" y="164" width="32" height="30"/>
-                                <state key="normal" title="Step"/>
-                                <connections>
-                                    <action selector="btnStep:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EQG-Fm-tRL"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="X1o-4d-T0e" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="144" id="5GV-sL-CM2"/>
-                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="leading" secondItem="X1o-4d-T0e" secondAttribute="leading" id="8Xk-Wa-aIb"/>
-                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="MXj-Ir-9Dr"/>
-                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dia-UE-VbZ"/>
-                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="top" secondItem="X1o-4d-T0e" secondAttribute="bottom" constant="8" id="rCN-2T-xNp"/>
-                            <constraint firstItem="wWx-Gs-w0N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rO7-Qh-SfO"/>
+                            <constraint firstAttribute="trailing" secondItem="WtD-fH-GaK" secondAttribute="trailing" id="GHU-ic-iqg"/>
+                            <constraint firstItem="WtD-fH-GaK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="J7O-H5-f1z"/>
+                            <constraint firstItem="WtD-fH-GaK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="gmS-rk-4Eh"/>
+                            <constraint firstItem="WtD-fH-GaK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zrh-5T-Guk"/>
                         </constraints>
                     </view>
                     <connections>
@@ -72,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="82" y="115"/>
+            <point key="canvasLocation" x="80.799999999999997" y="114.69265367316342"/>
         </scene>
     </scenes>
 </document>

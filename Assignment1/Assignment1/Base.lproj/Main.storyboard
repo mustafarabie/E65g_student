@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina4_0" orientation="landscape">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,14 +20,14 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN" userLabel="Main">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nvx-NP-9xu">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="271"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbQ-G0-Nva">
-                                        <rect key="frame" x="175.5" y="26.5" width="217" height="217"/>
+                                        <rect key="frame" x="32" y="131" width="256" height="256"/>
                                         <color key="backgroundColor" red="0.1764705882352941" green="0.53725490196078429" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="kbQ-G0-Nva" secondAttribute="height" multiplier="1:1" id="URL-rY-kd7"/>
@@ -68,14 +68,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW" userLabel="Main">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZs-tw-k1r">
-                                <rect key="frame" x="0.0" y="20" width="568" height="251"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0IU-e4-FJq" userLabel="Split2">
-                                        <rect key="frame" x="284" y="0.0" width="284" height="251"/>
+                                        <rect key="frame" x="0.0" y="249.5" width="320" height="249.5"/>
                                         <color key="backgroundColor" red="0.0" green="0.63921568630000003" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -84,10 +84,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsa-tT-SiT" userLabel="Split1">
-                                        <rect key="frame" x="0.0" y="0.0" width="284" height="251"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="249.5"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oJW-KG-21w" userLabel="Generation">
-                                                <rect key="frame" x="58" y="20" width="168" height="30"/>
+                                                <rect key="frame" x="76" y="20" width="168" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="PiT-fe-mg1"/>
                                                     <constraint firstAttribute="width" constant="168" id="y4m-Xy-KJH"/>
@@ -97,21 +97,21 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UMp-Dh-s0v" userLabel="Grid Size">
-                                                <rect key="frame" x="83" y="67" width="118" height="31"/>
+                                                <rect key="frame" x="101" y="67" width="118" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="114" id="LbM-Be-UHs"/>
                                                     <constraint firstAttribute="height" constant="30" id="NGu-5v-66R"/>
                                                 </constraints>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="knT-mr-O3S" userLabel="Frames/Secons">
-                                                <rect key="frame" x="83" y="116" width="118" height="31"/>
+                                                <rect key="frame" x="101" y="116" width="118" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="TT5-QL-rTM"/>
                                                     <constraint firstAttribute="width" constant="114" id="hnO-RF-Mk6"/>
                                                 </constraints>
                                             </slider>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iyU-eE-27Q" userLabel="Reset">
-                                                <rect key="frame" x="119" y="169" width="46" height="30"/>
+                                                <rect key="frame" x="137" y="169" width="46" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="46" id="PCk-u6-pD6"/>
                                                     <constraint firstAttribute="height" constant="30" id="W1X-Yx-3NO"/>
