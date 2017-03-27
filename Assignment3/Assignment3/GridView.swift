@@ -40,6 +40,7 @@ import UIKit
                     x: base.x + (CGFloat(j) * size.width),
                     y: base.y + (CGFloat(i) * size.height)
                 )
+                //size of cirecle bounds to draw into
                 let subRect = CGRect(
                     origin: origin,
                     size: size
