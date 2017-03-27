@@ -30,7 +30,7 @@ import UIKit
             width: rect.size.width / CGFloat(self.size),
             height: rect.size.height / CGFloat(self.size)
         )
-
+        
         //draw circles
         let base = rect.origin
         

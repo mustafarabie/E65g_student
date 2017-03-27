@@ -32,10 +32,15 @@ public enum CellState:String {
         return self.rawValue
         }
     
+    
+    /* NOTE TO PROF/TA: I would like to know which is the best/most efficient implementation. If you can give me feedback in canvas comments
+    I would really appreciate it. */
     public func allValues()->Array<String>{
         //let retArray = ["alive","empty","born","died"]
-        let retArray = [CellState.alive.rawValue, CellState.empty.rawValue, CellState.born.rawValue, CellState.empty.rawValue]
-        return retArray
+        //let retArray = [CellState.alive.rawValue, CellState.empty.rawValue, CellState.born.rawValue, CellState.empty.rawValue]
+        //
+        //return retArray
+        return [CellState.alive.rawValue, CellState.empty.rawValue, CellState.born.rawValue, CellState.empty.rawValue]
     }
     
     public func toggle(value:CellState)-> CellState{
