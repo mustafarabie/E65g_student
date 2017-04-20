@@ -40,7 +40,7 @@ public enum CellState:String {
         //let retArray = [CellState.alive.rawValue, CellState.empty.rawValue, CellState.born.rawValue, CellState.empty.rawValue]
         //
         //return retArray
-        return [CellState.alive.rawValue, CellState.empty.rawValue, CellState.born.rawValue, CellState.empty.rawValue]
+        return ["alive","empty","born","died"]
     }
     
     public func toggle(value:CellState)-> CellState{
