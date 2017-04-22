@@ -57,7 +57,7 @@
                                                 <rect key="frame" x="71" y="177" width="177" height="31"/>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Simulate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09y-pg-6hy">
-                                                <rect key="frame" x="102.5" y="215" width="115" height="21"/>
+                                                <rect key="frame" x="103" y="215" width="115" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="4at-r9-efI"/>
                                                     <constraint firstAttribute="width" constant="115" id="Hw5-hr-jDo"/>
