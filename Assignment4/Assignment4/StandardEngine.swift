@@ -10,6 +10,10 @@ import Foundation
 
 class StandardEngine: EngineProtocol {
     
+    static func getEngine() -> StandardEngine {
+        return StandardEngine.gridEngine
+    }
+    
     //Lazy Singleton
     static var gridEngine : StandardEngine = StandardEngine(rows: 10, cols: 10)
 
@@ -35,11 +39,11 @@ class StandardEngine: EngineProtocol {
         }
     }
     
-    
-    required init(rows: Int, cols: Int) {
+       required init(rows: Int, cols: Int) {
         self.rows = rows
         self.cols = cols
         self.grid = Grid(rows, cols)
+        delegate?.engineDidUpdate(withGrid: grid)
     }
     
 
@@ -55,5 +59,6 @@ class StandardEngine: EngineProtocol {
         nc.post(n)
         return grid
     }
+    
 }
 

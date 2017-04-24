@@ -49,8 +49,9 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     }
     
     @IBAction func btnStep(_ sender: Any) {
-        engine.grid = engine.grid.next()
+        engine.grid = engine.step()
         gridView.setNeedsDisplay()
+        
     }
     
 }
