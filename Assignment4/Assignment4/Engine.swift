@@ -8,6 +8,10 @@
 
 import Foundation
 
+public protocol GridViewDataSource {
+    subscript (row: Int, col: Int) -> CellState { get set }
+}
+
 protocol EngineDelegate {
     func engineDidUpdate(withGrid: GridProtocol)
 }
