@@ -10,9 +10,7 @@ import Foundation
 
 class StandardEngine: EngineProtocol {
     
-    static func getEngine() -> StandardEngine {
-        return StandardEngine.gridEngine
-    }
+    
     
     //Lazy Singleton
     static var gridEngine : StandardEngine = StandardEngine(rows: 10, cols: 10)
