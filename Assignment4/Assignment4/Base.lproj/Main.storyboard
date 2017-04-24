@@ -136,6 +136,7 @@
                         <outlet property="colStepper" destination="obQ-Wm-Xcy" id="JCP-eG-TTq"/>
                         <outlet property="colsTxt" destination="L03-Il-qrO" id="3AU-2W-rzu"/>
                         <outlet property="refreshRateSlider" destination="buV-lJ-2ib" id="GSY-Ic-vDm"/>
+                        <outlet property="resfreshSilder" destination="buV-lJ-2ib" id="dwV-n4-1Wx"/>
                         <outlet property="rowStepper" destination="i9w-x1-Lye" id="N9g-CK-gAV"/>
                         <outlet property="rowsTxt" destination="1d5-GX-9LY" id="bqE-cA-HTf"/>
                     </connections>

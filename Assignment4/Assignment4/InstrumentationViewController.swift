@@ -20,6 +20,7 @@ class InstrumentationViewController: UIViewController {
     
     var engine = StandardEngine.gridEngine
     
+    @IBOutlet weak var resfreshSilder: UISlider!
     override func viewDidLoad() {
         super.viewDidLoad()
         rowsTxt.text = String(engine.rows)
