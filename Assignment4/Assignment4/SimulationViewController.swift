@@ -21,6 +21,7 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         engine = StandardEngine.gridEngine
         engine.delegate = self
         gridView.grid = self
+        gridView.gridSize = engine.cols
         
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")
@@ -28,6 +29,7 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
             forName: name,
             object: nil,
             queue: nil) { (n) in
+                self.gridView.gridSize = self.engine.cols
                 self.gridView.setNeedsDisplay()
         }
         

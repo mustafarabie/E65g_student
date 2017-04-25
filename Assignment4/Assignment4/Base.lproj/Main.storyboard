@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,14 +19,14 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN" userLabel="Main">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bb-fZ-Qb9" userLabel="Placeholder">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhs-P5-Nt6">
-                                        <rect key="frame" x="27" y="139" width="320" height="320"/>
+                                        <rect key="frame" x="-0.5" y="89.5" width="320" height="320"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="rows" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1d5-GX-9LY">
                                                 <rect key="frame" x="73" y="59" width="60" height="30"/>
@@ -62,12 +62,24 @@
                                             </textField>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="buV-lJ-2ib">
                                                 <rect key="frame" x="71" y="177" width="177" height="31"/>
+                                                <connections>
+                                                    <action selector="refreshRateSlider:" destination="9pv-A4-QxB" eventType="valueChanged" id="OmF-Ha-iAG"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Simulate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09y-pg-6hy">
                                                 <rect key="frame" x="103" y="215" width="115" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="4at-r9-efI"/>
                                                     <constraint firstAttribute="width" constant="115" id="Hw5-hr-jDo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Size (row,columns)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqH-6C-Rio">
+                                                <rect key="frame" x="70" y="30" width="180.5" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="XRU-dP-HKl"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -93,17 +105,19 @@
                                             <constraint firstItem="i9w-x1-Lye" firstAttribute="leading" secondItem="obQ-Wm-Xcy" secondAttribute="leading" id="hX0-Pu-rbM"/>
                                             <constraint firstItem="buV-lJ-2ib" firstAttribute="centerX" secondItem="mhs-P5-Nt6" secondAttribute="centerX" id="kgq-m3-F5i"/>
                                             <constraint firstItem="buV-lJ-2ib" firstAttribute="top" secondItem="L03-Il-qrO" secondAttribute="bottom" constant="50" id="pW1-Ww-Y9I"/>
+                                            <constraint firstItem="CqH-6C-Rio" firstAttribute="centerX" secondItem="mhs-P5-Nt6" secondAttribute="centerX" id="vyp-5a-AUl"/>
+                                            <constraint firstItem="1d5-GX-9LY" firstAttribute="top" secondItem="CqH-6C-Rio" secondAttribute="bottom" constant="8" id="wBi-aI-oBB"/>
                                             <constraint firstItem="09y-pg-6hy" firstAttribute="top" secondItem="buV-lJ-2ib" secondAttribute="bottom" constant="8" id="y6c-mE-wAa"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refresh Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9s-ur-B2l">
-                                        <rect key="frame" x="138" y="289" width="99" height="21"/>
+                                        <rect key="frame" x="110.5" y="239.5" width="99" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PYT-bp-W07">
-                                        <rect key="frame" x="163" y="390" width="51" height="31"/>
+                                        <rect key="frame" x="135.5" y="340.5" width="51" height="31"/>
                                         <connections>
                                             <action selector="onoffSwitch:" destination="9pv-A4-QxB" eventType="valueChanged" id="oJL-6v-4nW"/>
                                         </connections>
@@ -133,17 +147,17 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="colStepper" destination="obQ-Wm-Xcy" id="JCP-eG-TTq"/>
-                        <outlet property="colsTxt" destination="L03-Il-qrO" id="3AU-2W-rzu"/>
-                        <outlet property="refreshRateSlider" destination="buV-lJ-2ib" id="GSY-Ic-vDm"/>
-                        <outlet property="resfreshSilder" destination="buV-lJ-2ib" id="dwV-n4-1Wx"/>
-                        <outlet property="rowStepper" destination="i9w-x1-Lye" id="N9g-CK-gAV"/>
-                        <outlet property="rowsTxt" destination="1d5-GX-9LY" id="bqE-cA-HTf"/>
+                        <outlet property="autoSimulateSwitch" destination="PYT-bp-W07" id="5D5-66-Dud"/>
+                        <outlet property="colsStepper" destination="obQ-Wm-Xcy" id="hs6-P3-QOV"/>
+                        <outlet property="colsText" destination="L03-Il-qrO" id="huV-67-Whc"/>
+                        <outlet property="rowsStepper" destination="i9w-x1-Lye" id="vsy-5D-QzE"/>
+                        <outlet property="rowsText" destination="1d5-GX-9LY" id="FDF-GL-Xkj"/>
+                        <outlet property="updateSlider" destination="buV-lJ-2ib" id="hnm-BB-g4n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.5" y="-321.5"/>
+            <point key="canvasLocation" x="748.125" y="-322.18309859154931"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="wg7-f3-ORb">
@@ -154,14 +168,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VG2-tg-mzp" userLabel="Main">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpE-3W-jxW" userLabel="Placeholder">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nk0-Pr-NQM">
-                                        <rect key="frame" x="67.5" y="178.5" width="240" height="240"/>
+                                        <rect key="frame" x="40" y="129" width="240" height="240"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dead" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emZ-pE-hPI">
                                                 <rect key="frame" x="71" y="98" width="40.5" height="21"/>
@@ -292,15 +306,15 @@
                         <viewControllerLayoutGuide type="bottom" id="lKQ-NH-rxF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jc7-Aq-AmR" userLabel="Main">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dih-Hb-kIl" userLabel="Placeholder">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qua-jm-L8T" customClass="GridView" customModule="Assignment4" customModuleProvider="target">
-                                        <rect key="frame" x="68" y="179" width="240" height="240"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="40.5" y="129.5" width="240" height="240"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="240" id="Hol-3G-5st"/>
                                             <constraint firstAttribute="width" secondItem="Qua-jm-L8T" secondAttribute="height" multiplier="1:1" id="sGN-SJ-HQl"/>
@@ -331,7 +345,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfX-Lw-9eH">
-                                        <rect key="frame" x="28" y="179" width="32" height="30"/>
+                                        <rect key="frame" x="0.5" y="129.5" width="32" height="30"/>
                                         <state key="normal" title="Step"/>
                                         <connections>
                                             <action selector="btnStep:" destination="4go-bO-A0l" eventType="touchUpInside" id="LtE-pQ-2P4"/>

@@ -51,18 +51,34 @@ class StandardEngine: EngineProtocol {
         delegate?.engineDidUpdate(withGrid: grid)
     }
     
+    func updateGridSize(_ size: Int) {
+        self.rows = size
+        self.cols = size
+        grid = Grid(size, size)
+        totalAlive = 0
+        totalBorn = 0
+        totalDied = 0
+        totalEmpty = 0
+        delegate?.engineDidUpdate(withGrid: grid)
+        updateNotification()
+    }
+    
 
     func step() -> GridProtocol {
         let nextGrid = grid.next()
         grid = nextGrid
         delegate?.engineDidUpdate(withGrid: grid)
+        updateNotification()
+        return grid
+    }
+    
+    func updateNotification(){
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")
         let n = Notification(name: name,
                              object: nil,
                              userInfo: ["engine" : self])
         nc.post(n)
-        return grid
     }
     
     func getTotals(_ grid: GridProtocol){

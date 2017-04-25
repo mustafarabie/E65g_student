@@ -1,7 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +22,53 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conway's Game of Life" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRc-tc-KsK">
+                                <rect key="frame" x="45" y="317" width="286" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="icons by: icons8.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Us-Kx-4cy">
+                                <rect key="frame" x="164" y="621" width="170" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mustafa Rabie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZJ-wj-QWz">
+                                <rect key="frame" x="124" y="366" width="128" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="0Yl-L7-BTE">
+                                <rect key="frame" x="127" y="148" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0Yl-L7-BTE" secondAttribute="height" multiplier="1:1" id="2d7-TK-CaK"/>
+                                    <constraint firstAttribute="width" constant="120" id="GOv-UI-cog"/>
+                                    <constraint firstAttribute="height" constant="120" id="KvD-YF-TXG"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rZJ-wj-QWz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2kK-VY-XHU"/>
+                            <constraint firstItem="kRc-tc-KsK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Bq0-YV-J6i"/>
+                            <constraint firstItem="kRc-tc-KsK" firstAttribute="top" secondItem="0Yl-L7-BTE" secondAttribute="bottom" constant="49" id="ELv-OP-apf"/>
+                            <constraint firstItem="0Yl-L7-BTE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NDi-qT-7bK"/>
+                            <constraint firstItem="kRc-tc-KsK" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ZgV-Sh-GXd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Us-Kx-4cy" secondAttribute="trailing" constant="25" id="aYw-Vb-XQI"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0Us-Kx-4cy" secondAttribute="bottom" constant="25" id="fQG-pf-phK"/>
+                            <constraint firstItem="rZJ-wj-QWz" firstAttribute="top" secondItem="kRc-tc-KsK" secondAttribute="bottom" constant="15" id="vep-3d-9IM"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="90" height="90"/>
+    </resources>
 </document>
