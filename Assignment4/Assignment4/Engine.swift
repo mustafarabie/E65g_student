@@ -24,5 +24,9 @@ protocol EngineProtocol {
     var refreshTimer: Timer? {get set}
     var rows: Int {get set}
     init(rows:Int, cols:Int)
+    var totalAlive: Int {get}
+    var totalBorn: Int {get}
+    var totalDied: Int {get}
+    var totalEmpty: Int {get}
     func step() -> GridProtocol
 }

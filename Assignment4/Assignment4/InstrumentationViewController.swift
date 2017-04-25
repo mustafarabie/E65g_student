@@ -45,12 +45,19 @@ class InstrumentationViewController: UIViewController {
         
         colsTxt.text = String(sender.value)
         engine.cols = Int(sender.value)
-        
-        
+        updateGrid(Int(sender.value))
     }
     @IBAction func changeGridRows(_ sender: UIStepper) {
         rowsTxt.text = String(sender.value)
         engine.rows = Int(sender.value)
+        updateGrid(Int(sender.value))
+    }
+    
+    private func updateGrid(_ size: Int)
+    {
+        engine.rows = size
+        engine.cols = size
+        engine = StandardEngine.gridEngine
     }
 
 

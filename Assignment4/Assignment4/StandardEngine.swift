@@ -10,8 +10,6 @@ import Foundation
 
 class StandardEngine: EngineProtocol {
     
-    
-    
     //Lazy Singleton
     static var gridEngine : StandardEngine = StandardEngine(rows: 10, cols: 10)
 
@@ -20,6 +18,11 @@ class StandardEngine: EngineProtocol {
     var refreshTimer: Timer?
     var rows: Int;
     var cols: Int;
+    var totalAlive: Int;
+    var totalBorn: Int;
+    var totalDied: Int;
+    var totalEmpty: Int;
+    
     var refreshRate = 0.0 {
         didSet{
             if refreshRate > 0.0 {
@@ -41,13 +44,17 @@ class StandardEngine: EngineProtocol {
         self.rows = rows
         self.cols = cols
         self.grid = Grid(rows, cols)
+        totalAlive = 0
+        totalBorn = 0
+        totalDied = 0
+        totalEmpty = 0
         delegate?.engineDidUpdate(withGrid: grid)
     }
     
 
     func step() -> GridProtocol {
-        let newGrid = grid.next()
-        grid = newGrid
+        let nextGrid = grid.next()
+        grid = nextGrid
         delegate?.engineDidUpdate(withGrid: grid)
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")
@@ -56,6 +63,26 @@ class StandardEngine: EngineProtocol {
                              userInfo: ["engine" : self])
         nc.post(n)
         return grid
+    }
+    
+    func getTotals(_ grid: GridProtocol){
+        totalAlive = 0
+        totalBorn = 0
+        totalDied = 0
+        totalEmpty = 0
+        
+        (0 ..< rows).forEach { row in
+            (0 ..< cols).forEach { col in
+                
+                switch grid[(row, col)] {
+                case .alive: totalAlive += 1
+                case .born: totalBorn += 1
+                case .empty: totalEmpty += 1
+                case .died: totalDied += 1
+                }
+                
+            }
+        }
     }
     
 }

@@ -16,11 +16,13 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var bornLabel: UILabel!
     @IBOutlet weak var emptyLabel: UILabel!
  
-    var engine = StandardEngine.gridEngine
+    var engine : StandardEngine!
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        engine = StandardEngine.gridEngine
         
         updateStats()
         
@@ -38,27 +40,11 @@ class StatisticsViewController: UIViewController {
     
    
     func updateStats(){
-        var totalAlive = 0
-        var totalBorn = 0
-        var totalEmpty = 0
-        var totalDied = 0
-        
-        (0 ..< engine.rows).forEach { i in
-            (0 ..< engine.cols).forEach { j in
-                
-                    switch engine.grid[(i, j)] {
-                    case .alive: totalAlive += 1
-                    case .born: totalBorn += 1
-                    case .empty: totalEmpty += 1
-                    case .died: totalDied += 1
-                    }
-                
-            }
-        }
-        aliveLabel.text = String(totalAlive)
-        bornLabel.text = String(totalBorn)
-        deadLabel.text = String(totalDied)
-        emptyLabel.text = String(totalEmpty)
+        engine.getTotals(engine.grid)
+        aliveLabel.text = String(engine.totalAlive)
+        bornLabel.text = String(engine.totalBorn)
+        deadLabel.text = String(engine.totalDied)
+        emptyLabel.text = String(engine.totalEmpty)
     }
 
     override func didReceiveMemoryWarning() {
