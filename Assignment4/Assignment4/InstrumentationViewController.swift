@@ -69,21 +69,16 @@ class InstrumentationViewController: UIViewController {
         }
     }
     
+    //updates rows and cols steppers values
     private func updateRowColSteppers(_ size: Double) {
         rowsStepper.value = size
         colsStepper.value = size
     }
     
+    //updates rows and cols text fields
     private func updateRowColText(_ size: Int) {
         rowsText.text = String(size)
         colsText.text = String(size)
     }
-    
-    /*private func updateGrid(_ size: Int) {
-        engine.rows = size
-        engine.cols = size
-        engine = StandardEngine(rows: size, cols: size)
-    }*/
-
 }
 

@@ -38,7 +38,7 @@ class StatisticsViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-   
+   //get total statistics and updates display
     func updateStats(){
         engine.getTotals(engine.grid)
         aliveLabel.text = String(engine.totalAlive)

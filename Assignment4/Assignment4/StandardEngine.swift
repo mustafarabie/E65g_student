@@ -51,6 +51,7 @@ class StandardEngine: EngineProtocol {
         delegate?.engineDidUpdate(withGrid: grid)
     }
     
+    //updates Grid Size and refreshes the notifications
     func updateGridSize(_ size: Int) {
         self.rows = size
         self.cols = size
@@ -72,6 +73,7 @@ class StandardEngine: EngineProtocol {
         return grid
     }
     
+    //notifications
     func updateNotification(){
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")
@@ -81,6 +83,7 @@ class StandardEngine: EngineProtocol {
         nc.post(n)
     }
     
+    //gets total counts for each state
     func getTotals(_ grid: GridProtocol){
         totalAlive = 0
         totalBorn = 0
