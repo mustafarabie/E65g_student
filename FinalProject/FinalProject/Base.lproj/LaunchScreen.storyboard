@@ -29,12 +29,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="icons by: icons8.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Us-Kx-4cy">
-                                <rect key="frame" x="164" y="621" width="170" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mustafa Rabie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZJ-wj-QWz">
                                 <rect key="frame" x="124" y="366" width="128" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -49,17 +43,23 @@
                                     <constraint firstAttribute="height" constant="120" id="KvD-YF-TXG"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="icons by: icons8.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Us-Kx-4cy">
+                                <rect key="frame" x="161" y="618" width="170" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rZJ-wj-QWz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2kK-VY-XHU"/>
                             <constraint firstItem="kRc-tc-KsK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Bq0-YV-J6i"/>
                             <constraint firstItem="kRc-tc-KsK" firstAttribute="top" secondItem="0Yl-L7-BTE" secondAttribute="bottom" constant="49" id="ELv-OP-apf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0Us-Kx-4cy" secondAttribute="trailing" constant="28" id="HLY-GU-J75"/>
                             <constraint firstItem="0Yl-L7-BTE" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NDi-qT-7bK"/>
                             <constraint firstItem="kRc-tc-KsK" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ZgV-Sh-GXd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0Us-Kx-4cy" secondAttribute="trailing" constant="25" id="aYw-Vb-XQI"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0Us-Kx-4cy" secondAttribute="bottom" constant="25" id="fQG-pf-phK"/>
                             <constraint firstItem="rZJ-wj-QWz" firstAttribute="top" secondItem="kRc-tc-KsK" secondAttribute="bottom" constant="15" id="vep-3d-9IM"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0Us-Kx-4cy" secondAttribute="bottom" constant="28" id="y5F-ym-fPs"/>
                         </constraints>
                     </view>
                 </viewController>

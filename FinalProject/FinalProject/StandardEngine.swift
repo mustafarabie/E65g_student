@@ -56,10 +56,7 @@ class StandardEngine: EngineProtocol {
         self.rows = size
         self.cols = size
         grid = Grid(size, size)
-        totalAlive = 0
-        totalBorn = 0
-        totalDied = 0
-        totalEmpty = 0
+        resetStats()
         delegate?.engineDidUpdate(withGrid: grid)
         updateNotification()
     }
@@ -85,10 +82,7 @@ class StandardEngine: EngineProtocol {
     
     //gets total counts for each state
     func getTotals(_ grid: GridProtocol){
-        totalAlive = 0
-        totalBorn = 0
-        totalDied = 0
-        totalEmpty = 0
+        resetStats()
         
         (0 ..< rows).forEach { row in
             (0 ..< cols).forEach { col in
@@ -102,6 +96,14 @@ class StandardEngine: EngineProtocol {
                 
             }
         }
+    }
+    
+    //reset stats
+    func resetStats() {
+        totalAlive = 0
+        totalBorn = 0
+        totalDied = 0
+        totalEmpty = 0
     }
     
 }

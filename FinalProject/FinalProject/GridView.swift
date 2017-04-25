@@ -84,14 +84,14 @@ import UIKit
         (0...self.gridSize).forEach{ i in
             (0...self.gridSize).forEach{ j in
                 let ovalOrigin = CGPoint(
-                    x: base.x + (CGFloat(j) * size.width) + 2.0,
-                    y: base.y + (CGFloat(i) * size.height + 2.0)
+                    x: base.x + (CGFloat(j) * size.width),
+                    y: base.y + (CGFloat(i) * size.height)
                 )
                 
                 // Make the oval draw 2 points short of the right and bottom edges
                 let ovalSize = CGSize(
-                    width: size.width - 4.0,
-                    height: size.height - 4.0
+                    width: size.width,
+                    height: size.height
                 )
 
                 

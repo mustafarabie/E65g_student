@@ -38,9 +38,18 @@ class StatisticsViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-   //get total statistics and updates display
+    @IBAction func resetStats(_ sender: UIButton) {
+        engine.resetStats()
+        updateUI()
+    }
+    
+    //get total statistics and updates display
     func updateStats(){
         engine.getTotals(engine.grid)
+        updateUI()
+    }
+    
+    private func updateUI() {
         aliveLabel.text = String(engine.totalAlive)
         bornLabel.text = String(engine.totalBorn)
         deadLabel.text = String(engine.totalDied)
