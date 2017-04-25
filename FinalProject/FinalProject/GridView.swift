@@ -1,6 +1,6 @@
 //
 //  GridView.swift
-//  Assignment3
+//  Final Project
 //
 //  Created by Mustafa Rabie on 3/26/17.
 //  Copyright © 2017 Harvard Division of Continuing Education. All rights reserved.
