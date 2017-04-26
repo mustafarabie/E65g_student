@@ -322,7 +322,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qua-jm-L8T" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
-                                        <rect key="frame" x="40.5" y="129.5" width="240" height="240"/>
+                                        <rect key="frame" x="40" y="130" width="240" height="240"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="240" id="Hol-3G-5st"/>
@@ -353,21 +353,152 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfX-Lw-9eH">
-                                        <rect key="frame" x="0.5" y="129.5" width="32" height="30"/>
-                                        <state key="normal" title="Step"/>
-                                        <connections>
-                                            <action selector="btnStep:" destination="4go-bO-A0l" eventType="touchUpInside" id="LtE-pQ-2P4"/>
-                                        </connections>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scj-BC-6pn" userLabel="NavHorizontal">
+                                        <rect key="frame" x="40" y="378" width="240" height="76"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6m-ZB-RVA">
+                                                <rect key="frame" x="94" y="0.0" width="52" height="76"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="titleEdgeInsets" minX="-47" minY="33" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="-31" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Step" image="Step">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnStep:" destination="4go-bO-A0l" eventType="touchUpInside" id="Ucm-Ht-FdQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gy-YM-hkC">
+                                                <rect key="frame" x="0.0" y="0.0" width="65" height="76"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="titleEdgeInsets" minX="-32" minY="33" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="15" minY="-47" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Reset" image="Reset">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wk-eI-fS5">
+                                                <rect key="frame" x="184" y="0.0" width="48" height="76"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="titleEdgeInsets" minX="-31" minY="33" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="12" minY="-48" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Save" image="Save">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="76" id="eYX-3Y-TxJ"/>
+                                            <constraint firstAttribute="width" constant="240" id="gBR-ia-Sdm"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="eYX-3Y-TxJ"/>
+                                                <exclude reference="gBR-ia-Sdm"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="eYX-3Y-TxJ"/>
+                                                <include reference="gBR-ia-Sdm"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhh-FR-Wel" userLabel="NavVertical">
+                                        <rect key="frame" x="424" y="5.5" width="70" height="240"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq5-50-zaa">
+                                                <rect key="frame" x="2" y="8" width="65" height="76"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="titleEdgeInsets" minX="-32" minY="15" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="15" minY="-47" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Reset" image="Reset">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m56-Vj-eon">
+                                                <rect key="frame" x="8" y="92" width="52" height="76"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="titleEdgeInsets" minX="-47" minY="33" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="-31" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Step" image="Step">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnStep:" destination="4go-bO-A0l" eventType="touchUpInside" id="em4-M0-lhr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIc-hY-vzS">
+                                                <rect key="frame" x="10" y="164" width="48" height="76"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="titleEdgeInsets" minX="-31" minY="23" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="12" minY="-31" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Save" image="Save">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="240" id="KMq-kf-mbV"/>
+                                            <constraint firstAttribute="width" constant="70" id="rt5-yq-mXi"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="KMq-kf-mbV"/>
+                                                <exclude reference="rt5-yq-mXi"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="KMq-kf-mbV"/>
+                                                <include reference="rt5-yq-mXi"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.70196078431372544" green="0.97647058823529409" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="VfX-Lw-9eH" firstAttribute="top" secondItem="Qua-jm-L8T" secondAttribute="top" id="BKq-zC-LGu"/>
+                                    <constraint firstItem="Scj-BC-6pn" firstAttribute="top" secondItem="Qua-jm-L8T" secondAttribute="bottom" constant="8" id="0ds-gb-qF0"/>
                                     <constraint firstItem="Qua-jm-L8T" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" id="GPI-vc-gxc"/>
+                                    <constraint firstItem="Scj-BC-6pn" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" id="Iaa-fA-mnm"/>
                                     <constraint firstItem="Qua-jm-L8T" firstAttribute="centerY" secondItem="dih-Hb-kIl" secondAttribute="centerY" id="Icd-WM-K3I"/>
-                                    <constraint firstItem="Qua-jm-L8T" firstAttribute="leading" secondItem="VfX-Lw-9eH" secondAttribute="trailing" constant="8" id="aig-Ri-gJU"/>
+                                    <constraint firstItem="hhh-FR-Wel" firstAttribute="leading" secondItem="Qua-jm-L8T" secondAttribute="trailing" constant="20" id="NTq-pp-Cid"/>
+                                    <constraint firstItem="hhh-FR-Wel" firstAttribute="centerY" secondItem="dih-Hb-kIl" secondAttribute="centerY" id="neS-IW-5z6"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="Scj-BC-6pn"/>
+                                        <exclude reference="hhh-FR-Wel"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="0ds-gb-qF0"/>
+                                        <exclude reference="Iaa-fA-mnm"/>
+                                        <exclude reference="NTq-pp-Cid"/>
+                                        <exclude reference="neS-IW-5z6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="hhh-FR-Wel"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="NTq-pp-Cid"/>
+                                        <include reference="neS-IW-5z6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="0ds-gb-qF0"/>
+                                        <include reference="Iaa-fA-mnm"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="Scj-BC-6pn"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -385,12 +516,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgr-8L-98D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-105" y="711.97183098591552"/>
+            <point key="canvasLocation" x="-106.875" y="709.85915492957747"/>
         </scene>
     </scenes>
     <resources>
         <image name="Instrumentation" width="32" height="32"/>
+        <image name="Reset" width="32" height="32"/>
+        <image name="Save" width="32" height="32"/>
         <image name="Simulation" width="32" height="32"/>
         <image name="Statistics" width="32" height="32"/>
+        <image name="Step" width="50" height="50"/>
     </resources>
 </document>

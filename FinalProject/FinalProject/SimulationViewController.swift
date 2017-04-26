@@ -35,6 +35,11 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    @IBAction func btnStep(_ sender: UIButton) {
+        engine.grid = engine.step()
+        gridView.setNeedsDisplay()
+    }
+    
     func engineDidUpdate(withGrid: GridProtocol) {
         self.gridView.setNeedsDisplay()
     }
@@ -49,10 +54,5 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func btnStep(_ sender: Any) {
-        engine.grid = engine.step()
-        gridView.setNeedsDisplay()
-        
-    }
     
 }
