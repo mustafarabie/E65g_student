@@ -82,8 +82,7 @@ class StandardEngine: EngineProtocol {
     
     //gets total counts for each state
     func getTotals(_ grid: GridProtocol){
-        resetStats()
-        
+        //resetStats() -- commented out to get running stats
         (0 ..< rows).forEach { row in
             (0 ..< cols).forEach { col in
                 

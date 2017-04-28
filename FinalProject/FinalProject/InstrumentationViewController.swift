@@ -62,7 +62,7 @@ class InstrumentationViewController: UIViewController {
     @IBAction func refreshRateSlider(_ sender: UISlider) {
         if (autoSimulateSwitch.isOn) {
             engine.refreshRate = 0.0
-            engine.refreshRate = Double(sender.value)
+            engine.refreshRate = Double(1/sender.value)
         }
         else {
             engine.refreshRate = 0.0

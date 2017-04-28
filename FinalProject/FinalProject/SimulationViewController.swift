@@ -54,5 +54,9 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func autoSimulate(_ sender: UISwitch) {
+        
+        
+    }
     
 }

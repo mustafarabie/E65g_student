@@ -14,6 +14,7 @@
 		26257DE91EAF2A540086CC46 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26257DE31EAF2A540086CC46 /* StatisticsViewController.swift */; };
 		26257DEA1EAF2A540086CC46 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26257DE41EAF2A540086CC46 /* Grid.swift */; };
 		26257DEC1EAF2B050086CC46 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26257DEB1EAF2B050086CC46 /* GridView.swift */; };
+		26DF1BC01EB3377400A03AAC /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF1BBF1EB3377400A03AAC /* Fetcher.swift */; };
 		FBAD2E271E2BE417008207C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAD2E261E2BE417008207C0 /* AppDelegate.swift */; };
 		FBAD2E2E1E2BE417008207C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBAD2E2C1E2BE417008207C0 /* Main.storyboard */; };
 		FBAD2E301E2BE417008207C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBAD2E2F1E2BE417008207C0 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		26257DE31EAF2A540086CC46 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		26257DE41EAF2A540086CC46 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		26257DEB1EAF2B050086CC46 /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		26DF1BBF1EB3377400A03AAC /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		FBAD2E231E2BE417008207C0 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBAD2E261E2BE417008207C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FBAD2E2D1E2BE417008207C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				FBAD2E2F1E2BE417008207C0 /* Assets.xcassets */,
 				FBAD2E311E2BE417008207C0 /* LaunchScreen.storyboard */,
 				FBAD2E341E2BE417008207C0 /* Info.plist */,
+				26DF1BBF1EB3377400A03AAC /* Fetcher.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				26257DE51EAF2A540086CC46 /* Engine.swift in Sources */,
 				26257DEA1EAF2A540086CC46 /* Grid.swift in Sources */,
 				26257DE81EAF2A540086CC46 /* StandardEngine.swift in Sources */,
+				26DF1BC01EB3377400A03AAC /* Fetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
