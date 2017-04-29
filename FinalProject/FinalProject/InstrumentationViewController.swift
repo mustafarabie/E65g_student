@@ -40,7 +40,7 @@ class InstrumentationViewController: UIViewController {
     
     @IBAction func onoffSwitch(_ sender: UISwitch) {
         if (sender.isOn){
-            engine.refreshRate = Double(updateSlider.value)
+            engine.refreshRate = Double(1/updateSlider.value)
         }
         else {
             engine.refreshRate = 0.0
@@ -60,13 +60,14 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func refreshRateSlider(_ sender: UISlider) {
-        if (autoSimulateSwitch.isOn) {
+        /*if (autoSimulateSwitch.isOn) {
             engine.refreshRate = 0.0
             engine.refreshRate = Double(1/sender.value)
         }
         else {
             engine.refreshRate = 0.0
-        }
+        }*/
+        engine.tempRefreshRate = Double(1/sender.value)
     }
     
     //updates rows and cols steppers values

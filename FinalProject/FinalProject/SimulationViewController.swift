@@ -12,7 +12,9 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     
     @IBOutlet weak var gridView: GridView!
     var engine: StandardEngine!
+    @IBOutlet weak var horAutoSimulateButton: UISwitch!
     
+    @IBOutlet weak var verAutoSimulateButton: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +32,14 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
             queue: nil) { (n) in
                 self.gridView.gridSize = self.engine.cols
                 self.gridView.setNeedsDisplay()
+                self.autoSimulate()
+                
         }
         
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    @IBAction func btnStep(_ sender: UIButton) {
+    @IBAction func stepButton(_ sender: UIButton) {
         engine.grid = engine.step()
         gridView.setNeedsDisplay()
     }
@@ -53,10 +57,26 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func resetGrid(_ sender: UIButton) {
+        engine.resetGrid()
+        verAutoSimulateButton.isOn = false
+        horAutoSimulateButton.isOn = false
+    }
     
-    @IBAction func autoSimulate(_ sender: UISwitch) {
-        
-        
+    @IBAction func autoSimulateAction(_ sender: UISwitch) {
+        verAutoSimulateButton.isOn = sender.isOn
+        horAutoSimulateButton.isOn = sender.isOn
+        autoSimulate()
+    }
+    
+    func autoSimulate() {
+        if (horAutoSimulateButton.isOn || verAutoSimulateButton.isOn) {
+            engine.refreshRate = 0.0
+            engine.refreshRate = engine.tempRefreshRate
+        }
+        else {
+            engine.refreshRate = 0.0
+        }
     }
     
 }

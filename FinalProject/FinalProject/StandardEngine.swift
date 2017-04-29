@@ -22,6 +22,7 @@ class StandardEngine: EngineProtocol {
     var totalBorn: Int;
     var totalDied: Int;
     var totalEmpty: Int;
+    var tempRefreshRate = 5.0
     
     var refreshRate = 0.0 {
         didSet{
@@ -61,6 +62,13 @@ class StandardEngine: EngineProtocol {
         updateNotification()
     }
     
+    //reset Grid
+    func resetGrid() {
+        grid = Grid(self.rows, self.cols)
+        resetStats()
+        delegate?.engineDidUpdate(withGrid: grid)
+        updateNotification()
+    }
 
     func step() -> GridProtocol {
         let nextGrid = grid.next()
@@ -104,6 +112,7 @@ class StandardEngine: EngineProtocol {
         totalDied = 0
         totalEmpty = 0
     }
+    
     
 }
 

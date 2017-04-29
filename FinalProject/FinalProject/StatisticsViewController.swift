@@ -17,7 +17,8 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var emptyLabel: UILabel!
  
     var engine : StandardEngine!
- 
+
+    var tempAlive: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

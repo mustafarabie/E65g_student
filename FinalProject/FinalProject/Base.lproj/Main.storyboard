@@ -329,13 +329,86 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dih-Hb-kIl" userLabel="Placeholder">
                                 <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qua-jm-L8T" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
-                                        <rect key="frame" x="35" y="125" width="250" height="250"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scj-BC-6pn" userLabel="NavHorizontal">
+                                        <rect key="frame" x="35" y="369" width="240" height="120"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gy-YM-hkC">
+                                                <rect key="frame" x="0.0" y="44" width="65" height="76"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="titleEdgeInsets" minX="-32" minY="33" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="15" minY="-47" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Reset" image="Reset">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="resetGrid:" destination="4go-bO-A0l" eventType="touchUpInside" id="Ip6-sN-DgN"/>
+                                                </connections>
+                                            </button>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JVA-1g-pk3">
+                                                <rect key="frame" x="139" y="3" width="51" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="autoSimulateAction:" destination="4go-bO-A0l" eventType="valueChanged" id="ncY-NC-3Xe"/>
+                                                </connections>
+                                            </switch>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wk-eI-fS5">
+                                                <rect key="frame" x="184" y="42" width="56" height="76"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="contentEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="-17" minY="33" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="27" minY="-48" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Save" image="Save">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6m-ZB-RVA">
+                                                <rect key="frame" x="94" y="22" width="52" height="90"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="25" maxX="0.0" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="-47" minY="38" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="-31" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Step" image="Step">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="stepButton:" destination="4go-bO-A0l" eventType="touchUpInside" id="T99-ID-gC2"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Auto Sim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trA-H4-ZFR">
+                                                <rect key="frame" x="62" y="9" width="78" height="18"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="Hol-3G-5st"/>
+                                            <constraint firstAttribute="height" constant="120" id="PE8-qo-2n5"/>
+                                            <constraint firstAttribute="width" constant="240" id="YZe-np-EPb"/>
+                                            <constraint firstAttribute="height" constant="120" id="hwe-oQ-Lj9"/>
+                                            <constraint firstAttribute="width" constant="240" id="jg8-a2-7ah"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="YZe-np-EPb"/>
+                                                <exclude reference="hwe-oQ-Lj9"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="YZe-np-EPb"/>
+                                                <include reference="hwe-oQ-Lj9"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qua-jm-L8T" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                        <rect key="frame" x="35" y="125" width="240" height="240"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="240" id="QeR-dn-5hf"/>
+                                            <constraint firstAttribute="width" constant="240" id="a2K-Pu-YWn"/>
                                             <constraint firstAttribute="width" secondItem="Qua-jm-L8T" secondAttribute="height" multiplier="1:1" id="sGN-SJ-HQl"/>
-                                            <constraint firstAttribute="width" constant="250" id="yK8-6H-sit"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="gridSize">
@@ -361,104 +434,24 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scj-BC-6pn" userLabel="NavHorizontal">
-                                        <rect key="frame" x="40" y="383" width="240" height="76"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6m-ZB-RVA">
-                                                <rect key="frame" x="94" y="0.0" width="52" height="76"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <inset key="titleEdgeInsets" minX="-47" minY="33" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="-31" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Step" image="Step">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="btnStep:" destination="4go-bO-A0l" eventType="touchUpInside" id="Ucm-Ht-FdQ"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gy-YM-hkC">
-                                                <rect key="frame" x="0.0" y="0.0" width="65" height="76"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <inset key="titleEdgeInsets" minX="-32" minY="33" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="15" minY="-47" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Reset" image="Reset">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wk-eI-fS5">
-                                                <rect key="frame" x="184" y="0.0" width="48" height="76"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <inset key="titleEdgeInsets" minX="-31" minY="33" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="12" minY="-48" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Save" image="Save">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="76" id="eYX-3Y-TxJ"/>
-                                            <constraint firstAttribute="width" constant="240" id="gBR-ia-Sdm"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="eYX-3Y-TxJ"/>
-                                                <exclude reference="gBR-ia-Sdm"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact">
-                                            <mask key="constraints">
-                                                <include reference="eYX-3Y-TxJ"/>
-                                                <include reference="gBR-ia-Sdm"/>
-                                            </mask>
-                                        </variation>
-                                    </view>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JVA-1g-pk3">
-                                        <rect key="frame" x="136" y="74" width="51" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="31" id="OGe-8t-DwD"/>
-                                            <constraint firstAttribute="width" constant="49" id="QL9-1S-Tga"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="autoSimulate:" destination="4go-bO-A0l" eventType="valueChanged" id="hdi-jH-Gbq"/>
-                                        </connections>
-                                    </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Simulate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2t-Ux-XjV">
-                                        <rect key="frame" x="107" y="45" width="106" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="106" id="csS-DK-hQR"/>
-                                            <constraint firstAttribute="height" constant="21" id="iPI-5Z-bM7"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhh-FR-Wel" userLabel="NavVertical">
-                                        <rect key="frame" x="429" y="5.5" width="70" height="240"/>
+                                        <rect key="frame" x="419" y="5.5" width="125" height="240"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq5-50-zaa">
-                                                <rect key="frame" x="2" y="8" width="65" height="76"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <inset key="titleEdgeInsets" minX="-32" minY="15" maxX="0.0" maxY="0.0"/>
-                                                <inset key="imageEdgeInsets" minX="15" minY="-47" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Reset" image="Reset">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m56-Vj-eon">
-                                                <rect key="frame" x="8" y="92" width="52" height="76"/>
+                                                <rect key="frame" x="65" y="78" width="52" height="84"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="11" maxX="0.0" maxY="0.0"/>
                                                 <inset key="titleEdgeInsets" minX="-47" minY="33" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="-31" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="Step" image="Step">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="btnStep:" destination="4go-bO-A0l" eventType="touchUpInside" id="em4-M0-lhr"/>
+                                                    <action selector="stepButton:" destination="4go-bO-A0l" eventType="touchUpInside" id="wYl-NU-Clv"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIc-hY-vzS">
-                                                <rect key="frame" x="10" y="164" width="48" height="76"/>
+                                                <rect key="frame" x="62" y="164" width="48" height="76"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <inset key="titleEdgeInsets" minX="-31" minY="23" maxX="0.0" maxY="0.0"/>
                                                 <inset key="imageEdgeInsets" minX="12" minY="-31" maxX="0.0" maxY="0.0"/>
@@ -466,39 +459,61 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq5-50-zaa">
+                                                <rect key="frame" x="47" y="15" width="78" height="66"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="titleEdgeInsets" minX="-32" minY="15" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="15" minY="-47" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Reset" image="Reset">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="resetGrid:" destination="4go-bO-A0l" eventType="touchUpInside" id="kiO-Fd-qFZ"/>
+                                                </connections>
+                                            </button>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="T83-kb-ARG">
+                                                <rect key="frame" x="8" y="78" width="51" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="autoSimulateAction:" destination="4go-bO-A0l" eventType="valueChanged" id="O8y-Ry-yR2"/>
+                                                </connections>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Auto Sim" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3N0-6x-sHJ">
+                                                <rect key="frame" x="8" y="89" width="45" height="95"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="240" id="KMq-kf-mbV"/>
-                                            <constraint firstAttribute="width" constant="70" id="rt5-yq-mXi"/>
+                                            <constraint firstAttribute="height" constant="240" id="tby-6s-FsT"/>
+                                            <constraint firstAttribute="width" constant="125" id="uL4-rj-QU2"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="KMq-kf-mbV"/>
-                                                <exclude reference="rt5-yq-mXi"/>
+                                                <exclude reference="tby-6s-FsT"/>
+                                                <exclude reference="uL4-rj-QU2"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=compact">
+                                        <variation key="widthClass=compact">
                                             <mask key="constraints">
-                                                <include reference="KMq-kf-mbV"/>
-                                                <include reference="rt5-yq-mXi"/>
+                                                <include reference="tby-6s-FsT"/>
+                                                <include reference="uL4-rj-QU2"/>
                                             </mask>
                                         </variation>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.70196078431372544" green="0.97647058823529409" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="JVA-1g-pk3" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" id="0Sc-Jx-6oK"/>
-                                    <constraint firstItem="J2t-Ux-XjV" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" id="0cc-Mm-6pz"/>
-                                    <constraint firstItem="Scj-BC-6pn" firstAttribute="top" secondItem="Qua-jm-L8T" secondAttribute="bottom" constant="8" id="0ds-gb-qF0"/>
-                                    <constraint firstItem="JVA-1g-pk3" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" id="7wZ-9J-8ia"/>
-                                    <constraint firstItem="Qua-jm-L8T" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" id="GPI-vc-gxc"/>
-                                    <constraint firstItem="Scj-BC-6pn" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" id="Iaa-fA-mnm"/>
-                                    <constraint firstItem="Qua-jm-L8T" firstAttribute="centerY" secondItem="dih-Hb-kIl" secondAttribute="centerY" id="Icd-WM-K3I"/>
-                                    <constraint firstItem="Qua-jm-L8T" firstAttribute="top" secondItem="JVA-1g-pk3" secondAttribute="bottom" constant="20" id="MKG-Kv-8u8"/>
-                                    <constraint firstItem="hhh-FR-Wel" firstAttribute="leading" secondItem="Qua-jm-L8T" secondAttribute="trailing" constant="20" id="NTq-pp-Cid"/>
-                                    <constraint firstItem="JVA-1g-pk3" firstAttribute="top" secondItem="J2t-Ux-XjV" secondAttribute="bottom" constant="8" id="cXC-bb-DGR"/>
-                                    <constraint firstItem="hhh-FR-Wel" firstAttribute="centerY" secondItem="dih-Hb-kIl" secondAttribute="centerY" id="neS-IW-5z6"/>
+                                    <constraint firstItem="Scj-BC-6pn" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" constant="-5" id="7VH-OW-I0g"/>
+                                    <constraint firstItem="hhh-FR-Wel" firstAttribute="leading" secondItem="Qua-jm-L8T" secondAttribute="trailing" constant="20" id="7w2-jH-mUX"/>
+                                    <constraint firstItem="Scj-BC-6pn" firstAttribute="top" secondItem="Qua-jm-L8T" secondAttribute="bottom" constant="4" id="dEg-uw-3ka"/>
+                                    <constraint firstItem="Scj-BC-6pn" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" constant="-5" id="r5i-ko-j9R"/>
+                                    <constraint firstItem="hhh-FR-Wel" firstAttribute="centerY" secondItem="dih-Hb-kIl" secondAttribute="centerY" id="s5O-vM-sy4"/>
+                                    <constraint firstItem="Qua-jm-L8T" firstAttribute="centerY" secondItem="dih-Hb-kIl" secondAttribute="centerY" constant="-4.5" id="wiL-Qa-2s1"/>
+                                    <constraint firstItem="Qua-jm-L8T" firstAttribute="centerX" secondItem="dih-Hb-kIl" secondAttribute="centerX" constant="-5" id="zwp-0g-3yU"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -506,25 +521,29 @@
                                         <exclude reference="hhh-FR-Wel"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="NTq-pp-Cid"/>
-                                        <exclude reference="neS-IW-5z6"/>
-                                        <exclude reference="0ds-gb-qF0"/>
-                                        <exclude reference="Iaa-fA-mnm"/>
+                                        <exclude reference="7VH-OW-I0g"/>
+                                        <exclude reference="dEg-uw-3ka"/>
+                                        <exclude reference="r5i-ko-j9R"/>
+                                        <exclude reference="7w2-jH-mUX"/>
+                                        <exclude reference="s5O-vM-sy4"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
                                     <mask key="subviews">
                                         <include reference="hhh-FR-Wel"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
                                     <mask key="constraints">
-                                        <include reference="NTq-pp-Cid"/>
-                                        <include reference="neS-IW-5z6"/>
+                                        <include reference="r5i-ko-j9R"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="0ds-gb-qF0"/>
-                                        <include reference="Iaa-fA-mnm"/>
+                                        <include reference="7VH-OW-I0g"/>
+                                        <include reference="dEg-uw-3ka"/>
+                                        <include reference="7w2-jH-mUX"/>
+                                        <include reference="s5O-vM-sy4"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -549,11 +568,13 @@
                     <tabBarItem key="tabBarItem" title="Simulation" image="Simulation" id="rte-bM-e3P"/>
                     <connections>
                         <outlet property="gridView" destination="Qua-jm-L8T" id="QgN-Zb-TyW"/>
+                        <outlet property="horAutoSimulateButton" destination="JVA-1g-pk3" id="SAm-K7-U8M"/>
+                        <outlet property="verAutoSimulateButton" destination="T83-kb-ARG" id="S6Y-Xi-bda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qgr-8L-98D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106.875" y="709.85915492957747"/>
+            <point key="canvasLocation" x="-112.5" y="704.57746478873241"/>
         </scene>
     </scenes>
     <resources>
