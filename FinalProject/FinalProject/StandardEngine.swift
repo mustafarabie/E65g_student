@@ -8,6 +8,7 @@
 
 import Foundation
 
+//typealias to the save the current gird state
 public typealias GridCurrentState = [String : Array<Array<Int>>]
 
 class StandardEngine: EngineProtocol {
@@ -60,7 +61,6 @@ class StandardEngine: EngineProtocol {
             "born"     : [],
             "died"     : []
         ]
-        
     }
     
     //updates Grid Size and refreshes the notifications
@@ -81,7 +81,7 @@ class StandardEngine: EngineProtocol {
         updateNotification()
     }
     
-    
+    //gets the next step in the game
     func step() -> GridProtocol {
         let nextGrid = grid.next()
         grid = nextGrid
@@ -90,7 +90,7 @@ class StandardEngine: EngineProtocol {
         return grid
     }
     
-    //notifications
+    //send a notification when an update to the Grid happens
     func updateNotification(){
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")
@@ -102,7 +102,6 @@ class StandardEngine: EngineProtocol {
     
     //gets total counts for each state
     func getTotals(_ grid: GridProtocol){
-        //let x = lazyPositions(grid.size).reduce(0) { return  self.grid[($0.row, $0.col)] == .alive ? totalAlive + 1 : totalAlive}
         
         (0 ..< rows).forEach { row in
             (0 ..< cols).forEach { col in
@@ -112,7 +111,6 @@ class StandardEngine: EngineProtocol {
                 case .empty: totalEmpty += 1
                 case .died: totalDied += 1
                 }
-                
             }
         }
     }
@@ -127,9 +125,10 @@ class StandardEngine: EngineProtocol {
     
     //save current state
     func saveCurrnetGridState(_ grid: GridProtocol) {
-        
+
         currentGridState["gridSize"]!.append([rows,cols])
         
+        //loop through grid and save the current state of the alive, born and died cells
         (0 ..< rows).forEach { row in
             (0 ..< cols).forEach { col in
                 switch grid[(row, col)] {
@@ -140,7 +139,7 @@ class StandardEngine: EngineProtocol {
                 }
             }
         }
-        
+        //save current state to user defaults
         let defaults = UserDefaults.standard
         defaults.set(currentGridState, forKey: "savedSession")
     }

@@ -17,17 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let defaults = UserDefaults.standard
         
+        let defaults = UserDefaults.standard
+        //check if a state is stored
         guard let loadedGridData = defaults.object(forKey: "savedSession") as? GridCurrentState
             else {
                 return true
         }
-        
+        //update grid based on the saved data
         engine = StandardEngine.gridEngine
         engine.loadSavedGridState(loadedGridData)
-        
-        
+
         return true
     }
 
