@@ -332,7 +332,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Scj-BC-6pn" userLabel="NavHorizontal">
                                         <rect key="frame" x="35" y="369" width="240" height="120"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gy-YM-hkC">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gy-YM-hkC">
                                                 <rect key="frame" x="0.0" y="44" width="65" height="76"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <inset key="titleEdgeInsets" minX="-32" minY="33" maxX="0.0" maxY="0.0"/>
@@ -351,7 +351,7 @@
                                                     <action selector="autoSimulateAction:" destination="4go-bO-A0l" eventType="valueChanged" id="ncY-NC-3Xe"/>
                                                 </connections>
                                             </switch>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wk-eI-fS5">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wk-eI-fS5">
                                                 <rect key="frame" x="184" y="42" width="56" height="76"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <inset key="contentEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -360,8 +360,11 @@
                                                 <state key="normal" title="Save" image="Save">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="saveStateButton:" destination="4go-bO-A0l" eventType="touchUpInside" id="kPe-zZ-gMe"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6m-ZB-RVA">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6m-ZB-RVA">
                                                 <rect key="frame" x="94" y="22" width="52" height="90"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="25" maxX="0.0" maxY="0.0"/>
@@ -437,7 +440,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhh-FR-Wel" userLabel="NavVertical">
                                         <rect key="frame" x="419" y="5.5" width="125" height="240"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m56-Vj-eon">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m56-Vj-eon">
                                                 <rect key="frame" x="65" y="78" width="52" height="84"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <inset key="contentEdgeInsets" minX="0.0" minY="11" maxX="0.0" maxY="0.0"/>
@@ -450,7 +453,7 @@
                                                     <action selector="stepButton:" destination="4go-bO-A0l" eventType="touchUpInside" id="wYl-NU-Clv"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIc-hY-vzS">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIc-hY-vzS">
                                                 <rect key="frame" x="62" y="164" width="48" height="76"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <inset key="titleEdgeInsets" minX="-31" minY="23" maxX="0.0" maxY="0.0"/>
@@ -459,7 +462,7 @@
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq5-50-zaa">
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lq5-50-zaa">
                                                 <rect key="frame" x="47" y="15" width="78" height="66"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <inset key="titleEdgeInsets" minX="-32" minY="15" maxX="0.0" maxY="0.0"/>
@@ -521,11 +524,11 @@
                                         <exclude reference="hhh-FR-Wel"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="7w2-jH-mUX"/>
+                                        <exclude reference="s5O-vM-sy4"/>
                                         <exclude reference="7VH-OW-I0g"/>
                                         <exclude reference="dEg-uw-3ka"/>
                                         <exclude reference="r5i-ko-j9R"/>
-                                        <exclude reference="7w2-jH-mUX"/>
-                                        <exclude reference="s5O-vM-sy4"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
@@ -540,10 +543,10 @@
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="7VH-OW-I0g"/>
-                                        <include reference="dEg-uw-3ka"/>
                                         <include reference="7w2-jH-mUX"/>
                                         <include reference="s5O-vM-sy4"/>
+                                        <include reference="7VH-OW-I0g"/>
+                                        <include reference="dEg-uw-3ka"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">

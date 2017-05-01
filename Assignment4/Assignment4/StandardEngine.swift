@@ -12,7 +12,8 @@ class StandardEngine: EngineProtocol {
     
     //Lazy Singleton
     static var gridEngine : StandardEngine = StandardEngine(rows: 10, cols: 10)
-
+    
+    
     var grid: GridProtocol
     var delegate: EngineDelegate?
     var refreshTimer: Timer?
@@ -85,10 +86,6 @@ class StandardEngine: EngineProtocol {
     
     //gets total counts for each state
     func getTotals(_ grid: GridProtocol){
-        totalAlive = 0
-        totalBorn = 0
-        totalDied = 0
-        totalEmpty = 0
         
         (0 ..< rows).forEach { row in
             (0 ..< cols).forEach { col in

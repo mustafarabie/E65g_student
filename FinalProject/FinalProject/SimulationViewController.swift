@@ -11,10 +11,10 @@ import UIKit
 class SimulationViewController: UIViewController, GridViewDataSource, EngineDelegate{
     
     @IBOutlet weak var gridView: GridView!
-    var engine: StandardEngine!
     @IBOutlet weak var horAutoSimulateButton: UISwitch!
-    
     @IBOutlet weak var verAutoSimulateButton: UISwitch!
+    
+    var engine: StandardEngine!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,9 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     
     func engineDidUpdate(withGrid: GridProtocol) {
         self.gridView.setNeedsDisplay()
+    }
+    @IBAction func saveStateButton(_ sender: UIButton) {
+        engine.saveCurrnetGridState(engine.grid)
     }
     
     public subscript (row: Int, col: Int) -> CellState {

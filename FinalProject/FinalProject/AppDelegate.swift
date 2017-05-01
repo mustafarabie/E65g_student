@@ -12,10 +12,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var engine: StandardEngine!
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let defaults = UserDefaults.standard
+        
+        guard let loadedGridData = defaults.object(forKey: "savedSession") as? GridCurrentState
+            else {
+                return true
+        }
+        
+        engine = StandardEngine.gridEngine
+        engine.loadSavedGridState(loadedGridData)
+        
+        
         return true
     }
 

@@ -4,7 +4,7 @@
 public typealias GridPosition = (row: Int, col: Int)
 public typealias GridSize = (rows: Int, cols: Int)
 
-fileprivate func norm(_ val: Int, to size: Int) -> Int { return ((val % size) + size) % size }
+public func norm(_ val: Int, to size: Int) -> Int { return ((val % size) + size) % size }
 
 public enum CellState {
     case alive, empty, born, died
@@ -66,6 +66,8 @@ extension GridProtocol {
         lazyPositions(self.size).forEach { nextGrid[$0.row, $0.col] = self.nextState(of: $0) }
         return nextGrid
     }
+    
+    
 }
 
 public struct Grid: GridProtocol {
