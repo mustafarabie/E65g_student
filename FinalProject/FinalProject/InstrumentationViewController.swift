@@ -134,7 +134,9 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     
-    @IBAction func addButtonAction(_ sender: UIButton) {
+    @IBAction func addNewGameButtonAction(_ sender: UIButton) {
+        data[0] = ["New Game"] + data[0]
+        self.gamesTableView.reloadData()
     }
     
     

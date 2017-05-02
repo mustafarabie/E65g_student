@@ -61,7 +61,7 @@
                                         </constraints>
                                         <state key="normal" image="Add"/>
                                         <connections>
-                                            <action selector="addButtonAction:" destination="9pv-A4-QxB" eventType="touchUpInside" id="wzD-Cl-OPu"/>
+                                            <action selector="addNewGameButtonAction:" destination="9pv-A4-QxB" eventType="touchUpInside" id="HCc-1F-ccu"/>
                                         </connections>
                                     </button>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="i9w-x1-Lye">
@@ -226,9 +226,60 @@
         <scene sceneID="8qY-Gn-wq4">
             <objects>
                 <viewController id="LRu-mM-PbV" userLabel="Grid Editor" customClass="GridEditorViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qUc-DW-6xb"/>
+                        <viewControllerLayoutGuide type="bottom" id="hb0-35-jYT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b1E-RQ-SPx" userLabel="Main">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Li-L0-B0N" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                <rect key="frame" x="40" y="164" width="240" height="240"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="OS6-ih-vbi"/>
+                                    <constraint firstAttribute="height" constant="240" id="WSg-3i-0oI"/>
+                                    <constraint firstAttribute="width" secondItem="7Li-L0-B0N" secondAttribute="height" multiplier="1:1" id="nod-CF-vwi"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gridSize">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gridWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
+                                        <color key="value" red="0.0" green="0.50196078430000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
+                                        <color key="value" red="0.0" green="0.50196078430000002" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                        <color key="value" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
+                                        <color key="value" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="gridColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Li-L0-B0N" firstAttribute="centerY" secondItem="b1E-RQ-SPx" secondAttribute="centerY" id="CLU-kR-B5H"/>
+                            <constraint firstItem="7Li-L0-B0N" firstAttribute="width" secondItem="7Li-L0-B0N" secondAttribute="height" multiplier="1:1" id="UQP-8G-8vQ"/>
+                            <constraint firstItem="7Li-L0-B0N" firstAttribute="centerX" secondItem="b1E-RQ-SPx" secondAttribute="centerX" id="nLC-zT-VIb"/>
+                        </constraints>
+                    </view>
                     <navigationItem key="navigationItem" title="Grid Editor" id="8LM-rW-5si"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="gridView" destination="7Li-L0-B0N" id="LOk-yJ-SJh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtr-2b-Xc1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
