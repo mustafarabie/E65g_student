@@ -25,7 +25,7 @@ class StandardEngine: EngineProtocol {
     var totalBorn: Int;
     var totalDied: Int;
     var totalEmpty: Int;
-    var tempRefreshRate = 5.0
+    var tempRefreshRate = 0.0
     
     var currentGridState : GridCurrentState
     
@@ -56,10 +56,11 @@ class StandardEngine: EngineProtocol {
         totalEmpty = 0
         delegate?.engineDidUpdate(withGrid: grid)
         currentGridState = [
-            "gridSize" : [],
-            "alive"    : [],
-            "born"     : [],
-            "died"     : []
+            "statistics" : [],
+            "gridSize"   : [],
+            "alive"      : [],
+            "born"       : [],
+            "died"       : []
         ]
     }
     
@@ -126,6 +127,7 @@ class StandardEngine: EngineProtocol {
     //save current state
     func saveCurrnetGridState(_ grid: GridProtocol) {
 
+        currentGridState["statistics"]!.append([totalAlive,totalDied,totalBorn,totalEmpty])
         currentGridState["gridSize"]!.append([rows,cols])
         
         //loop through grid and save the current state of the alive, born and died cells
@@ -147,6 +149,8 @@ class StandardEngine: EngineProtocol {
     //load saved grid State
     func loadSavedGridState(_ loadedGridData: GridCurrentState)
     {
+        //extract statistics from loadedGridData
+        let statisticsData = loadedGridData["statistics"]
         //extract gridSize from loadedGridData
         let gridSizeData = loadedGridData["gridSize"]
         //extract alive cells array from loadedGridData
@@ -158,10 +162,19 @@ class StandardEngine: EngineProtocol {
         
         let row = 0
         let col = 1
+        
+        //set statistics of loaded Grid State
+        totalAlive = statisticsData![0][0]
+        totalDied = statisticsData![0][1]
+        totalBorn = statisticsData![0][2]
+        totalEmpty = statisticsData![0][3]
+        
         //set gridSize to loaded GridSize
         grid = Grid(gridSizeData![0][0], gridSizeData![0][1])
+        
         //set engine rows to the loaded gridSize rows
         StandardEngine.gridEngine.rows = grid.size.rows
+        
         //set engine cols to the loaded gridSize cols
         StandardEngine.gridEngine.cols = grid.size.cols
         
