@@ -1,6 +1,8 @@
 //
 //  Grid.swift
 //
+import Foundation
+
 public typealias GridPosition = (row: Int, col: Int)
 public typealias GridSize = (rows: Int, cols: Int)
 
@@ -67,12 +69,47 @@ extension GridProtocol {
         return nextGrid
     }
     
+    public var aliveCount : Int {return lazyPositions(self.size).filter { return  self[$0.row, $0.col] == .alive }.count }
+    public var bornCount  : Int {return lazyPositions(self.size).filter { return  self[$0.row, $0.col] == .born  }.count }
+    public var diedCount  : Int {return lazyPositions(self.size).filter { return  self[$0.row, $0.col] == .died  }.count }
+    public var emptyCount : Int {return lazyPositions(self.size).filter { return  self[$0.row, $0.col] == .empty }.count }
     
+    func setConfiguration(currentStatistics statisticsData : [Int]) {
+        
+        var currentGridState : GridCurrentState = [
+            "statistics" : [],
+            "gridSize"   : [],
+            "alive"      : [],
+            "born"       : [],
+            "died"       : []
+        ]
+
+        currentGridState["statistics"]!.append([statisticsData[0], statisticsData[1], statisticsData[2], statisticsData[3]])
+        currentGridState["gridSize"]!.append([size.rows, size.cols])
+        
+        lazyPositions(self.size).forEach {
+            switch self[$0.row, $0.col] {
+            case .born:
+                currentGridState["born"] = (currentGridState["born"] ?? []) + [[$0.row, $0.col]]
+            case .died:
+                currentGridState["died"] = (currentGridState["died"] ?? []) + [[$0.row, $0.col]]
+            case .alive:
+                currentGridState["alive"] = (currentGridState["alive"] ?? []) + [[$0.row, $0.col]]
+            case .empty:
+                ()
+            }
+        }
+        
+        //save current state to user defaults
+        let defaults = UserDefaults.standard
+        defaults.set(currentGridState, forKey: "savedSession")
+    }
 }
 
 public struct Grid: GridProtocol {
     private var _cells: [[CellState]]
     public let size: GridSize
+    
     
     public subscript (row: Int, col: Int) -> CellState {
         get { return _cells[norm(row, to: size.rows)][norm(col, to: size.cols)] }
@@ -87,7 +124,7 @@ public struct Grid: GridProtocol {
 }
 
 extension Grid: Sequence {
-    fileprivate var living: [GridPosition] {
+    public var living: [GridPosition] {
         return lazyPositions(self.size).filter { return  self[$0.row, $0.col].isAlive   }
     }
     

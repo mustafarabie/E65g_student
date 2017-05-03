@@ -17,8 +17,6 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var emptyLabel: UILabel!
  
     var engine : StandardEngine!
-
-    var tempAlive: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,24 +37,22 @@ class StatisticsViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    @IBAction func resetStats(_ sender: UIButton) {
-        engine.resetStats()
-        updateUI()
-    }
-    
     //get total statistics and updates display
     func updateStats(){
         engine.getTotals(engine.grid)
         updateUI()
     }
     
+    //update UI tables with the RUNNING stats
     private func updateUI() {
         aliveLabel.text = String(engine.totalAlive)
         bornLabel.text = String(engine.totalBorn)
         deadLabel.text = String(engine.totalDied)
         emptyLabel.text = String(engine.totalEmpty)
     }
-
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

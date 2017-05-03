@@ -9,13 +9,13 @@
 import Foundation
 
 //typealias to the save the current gird state
-public typealias GridCurrentState = [String : Array<Array<Int>>]
+public typealias GridCurrentState = [String : [[Int]]]
 
 class StandardEngine: EngineProtocol {
 
     //Lazy Singleton
     static var gridEngine : StandardEngine = StandardEngine(rows: 10, cols: 10)
-
+    
     var grid: GridProtocol
     var delegate: EngineDelegate?
     var refreshTimer: Timer?
@@ -26,6 +26,8 @@ class StandardEngine: EngineProtocol {
     var totalDied: Int;
     var totalEmpty: Int;
     var tempRefreshRate = 0.0
+    //Bool variable to indicate weather the statistics data was loaded from saved data, in order not to update on 1st load
+    var isJustLoaded : Bool = false
     
     var currentGridState : GridCurrentState
     
@@ -101,52 +103,33 @@ class StandardEngine: EngineProtocol {
         nc.post(n)
     }
     
-    //gets total counts for each state
-    func getTotals(_ grid: GridProtocol){
-        
-        (0 ..< rows).forEach { row in
-            (0 ..< cols).forEach { col in
-                switch grid[(row, col)] {
-                case .alive: totalAlive += 1
-                case .born: totalBorn += 1
-                case .empty: totalEmpty += 1
-                case .died: totalDied += 1
-                }
-            }
+    //gets RUNNING total for each state
+    func getTotals(_ grid: GridProtocol) {
+        if (!isJustLoaded){
+            totalAlive = totalAlive + grid.aliveCount
+            totalBorn  = totalBorn  + grid.bornCount
+            totalDied  = totalDied  + grid.diedCount
+            totalEmpty = totalEmpty + grid.emptyCount
+        }
+        else {
+            isJustLoaded = false
         }
     }
     
-    //reset stats
+    //reset statistics
     func resetStats() {
         totalAlive = 0
-        totalBorn = 0
-        totalDied = 0
+        totalBorn  = 0
+        totalDied  = 0
         totalEmpty = 0
     }
     
     //save current state
     func saveCurrnetGridState(_ grid: GridProtocol) {
-
-        currentGridState["statistics"]!.append([totalAlive,totalDied,totalBorn,totalEmpty])
-        currentGridState["gridSize"]!.append([rows,cols])
-        
-        //loop through grid and save the current state of the alive, born and died cells
-        (0 ..< rows).forEach { row in
-            (0 ..< cols).forEach { col in
-                switch grid[(row, col)] {
-                case .alive: currentGridState["alive"]!.append([row,col])
-                case .born: currentGridState["born"]!.append([row,col])
-                case .died: currentGridState["died"]!.append([row,col])
-                default: break
-                }
-            }
-        }
-        //save current state to user defaults
-        let defaults = UserDefaults.standard
-        defaults.set(currentGridState, forKey: "savedSession")
+        grid.setConfiguration(currentStatistics: [totalAlive, totalDied, totalBorn, totalEmpty])
     }
     
-    //load saved grid State
+    //load saved grid state
     func loadSavedGridState(_ loadedGridData: GridCurrentState)
     {
         //extract statistics from loadedGridData
@@ -165,9 +148,12 @@ class StandardEngine: EngineProtocol {
         
         //set statistics of loaded Grid State
         totalAlive = statisticsData![0][0]
-        totalDied = statisticsData![0][1]
-        totalBorn = statisticsData![0][2]
+        totalDied  = statisticsData![0][1]
+        totalBorn  = statisticsData![0][2]
         totalEmpty = statisticsData![0][3]
+        
+        //set isJustLoaded to True to load correct statistics data
+        isJustLoaded = true
         
         //set gridSize to loaded GridSize
         grid = Grid(gridSizeData![0][0], gridSizeData![0][1])
@@ -195,6 +181,5 @@ class StandardEngine: EngineProtocol {
             let cell = diedData![i]
             grid[cell[row], cell[col]] = .died
         }
-        
     }
 }

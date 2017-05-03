@@ -8,83 +8,6 @@
 
 import UIKit
 
-var sectionHeaders = [
-    "One", "Two", "Three", "Four", "Five", "Six"
-]
-
-var data = [
-    [
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date"
-    ],
-    [
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana"
-    ],
-    [
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry"
-    ],
-    [
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Apple",
-        "Banana",
-        "Cherry",
-        "Date",
-        "Kiwi",
-        "Blueberry"
-    ]
-]
-
-
 class InstrumentationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
@@ -97,6 +20,8 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     var engine : StandardEngine!
     
+    var gameTitlesData = [[String]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         engine = StandardEngine.gridEngine
@@ -105,6 +30,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         gridRowStepper.value = Double(engine.rows)
         gridColStepper.value = Double(engine.cols)
         engine.tempRefreshRate = Double(1/updateSlider.value)
+        fetchDate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -135,7 +61,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     
     @IBAction func addNewGameButtonAction(_ sender: UIButton) {
-        data[0] = ["New Game"] + data[0]
+        gameTitlesData[0] = ["New Game"] + gameTitlesData[0]
         self.gamesTableView.reloadData()
     }
     
@@ -156,50 +82,87 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     //MARK: TableView DataSource and Delegate
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
+    func numberOfSections(in gamesTableView: UITableView) -> Int {
+        //return data.count
+        return gameTitlesData.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data[section].count
+    func tableView(_ gamesTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return data[section].count
+        return gameTitlesData[section].count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ gamesTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "basic"
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        let cell = gamesTableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         let label = cell.contentView.subviews.first as! UILabel
-        label.text = data[indexPath.section][indexPath.item]
+        label.text = gameTitlesData[indexPath.section][indexPath.item]
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionHeaders[section]
-    }
+    /*func tableView(_ gamesTableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Games" //sectionHeaders[section]
+    }*/
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ gamesTableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            var newData = data[indexPath.section]
+            var newData = gameTitlesData[indexPath.section]
             newData.remove(at: indexPath.row)
-            data[indexPath.section] = newData
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
+            gameTitlesData[indexPath.section] = newData
+            gamesTableView.deleteRows(at: [indexPath], with: .automatic)
+            gamesTableView.reloadData()
         }
     }
     
-   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = gamesTableView.indexPathForSelectedRow
         if let indexPath = indexPath {
-            let fruitValue = data[indexPath.section][indexPath.row]
+            let gameTitle = gameTitlesData[indexPath.section][indexPath.row]
             if let vc = segue.destination as? GridEditorViewController {
-                vc.fruitValue = fruitValue
+                vc.gameTitle = gameTitle
                 vc.saveClosure = { newValue in
-                    data[indexPath.section][indexPath.row] = newValue
-                    self.tableView.reloadData()
+                    self.gameTitlesData[indexPath.section][indexPath.row] = newValue
+                    self.gamesTableView.reloadData()
                 }
             }
         }
-    } */
+    }
+    
+    
+    func fetchDate() {
+        let fetcher = Fetcher()
+        let finalProjectURL = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
+        
+        fetcher.fetchJSON(url: URL(string:finalProjectURL)!) { (json: Any?, message: String?) in
+            guard message == nil else {
+                print(message ?? "nil")
+                return
+            }
+            guard let json = json else {
+                print("no json")
+                return
+            }
+
+            let jsonArray = json as! NSArray
+            
+            (0..<jsonArray.count).forEach { i in
+                let jsonDictionary = jsonArray[i] as! NSDictionary
+                let jsonTitle = jsonDictionary["title"] as! String
+                self.gameTitlesData.append([jsonTitle])
+            }
+            
+            
+            //let jsonDictionary = jsonArray[0] as! NSDictionary
+            //let jsonTitle = jsonDictionary["title"] as! String
+            //let jsonContents = jsonDictionary["contents"] as! [[Int]]
+
+            OperationQueue.main.addOperation {
+                self.gamesTableView.reloadData()
+            }
+        }
+    }
+    
     
     //MARK: AlertController Handling
     func alertMessageOk(title: String, message: String) {
