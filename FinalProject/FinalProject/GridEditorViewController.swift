@@ -15,6 +15,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     
     var saveClosure: ((String) -> Void)?
     var gameTitle: String?
+    var passedGridValues = [[Int]]()
     
     var engine: StandardEngine = StandardEngine(rows: 10, cols: 10)
     

@@ -21,6 +21,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     var engine : StandardEngine!
     
     var gameTitlesData = [[String]]()
+    var gameCellsData = [[Int]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,6 +135,9 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         let fetcher = Fetcher()
         let finalProjectURL = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
         
+        let row = 0
+        let col = 1
+        
         fetcher.fetchJSON(url: URL(string:finalProjectURL)!) { (json: Any?, message: String?) in
             guard message == nil else {
                 print(message ?? "nil")
@@ -150,6 +154,11 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
                 let jsonDictionary = jsonArray[i] as! NSDictionary
                 let jsonTitle = jsonDictionary["title"] as! String
                 self.gameTitlesData.append([jsonTitle])
+                let jsonContents = jsonDictionary["contents"] as! [[Int]]
+                print(jsonContents[0])
+                (0..<jsonContents.count).forEach { j in
+                    self.gameCellsData.append([cell[row], cell[col]])
+                }
             }
             
             
