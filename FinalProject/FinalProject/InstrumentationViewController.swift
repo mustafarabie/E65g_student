@@ -21,15 +21,13 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     var engine : StandardEngine!
     
     var gameTitlesData = [[String]]()
-    var gameCellsData = [[Int]]()
+    var gameCellsData = [JsonLoadedGrid]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         engine = StandardEngine.gridEngine
-        gridRowLabel.text = String(engine.rows)
-        gridColLabel.text = String(engine.cols)
-        gridRowStepper.value = Double(engine.rows)
-        gridColStepper.value = Double(engine.cols)
+        updateGridSizeSteppers(engine.rows)
+        updateGridSizeText(engine.rows)
         engine.tempRefreshRate = Double(1/updateSlider.value)
         fetchDate()
     }
@@ -44,13 +42,13 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     @IBAction func changeGridSize(_ sender: UIStepper) {
         if(sender.value >= 10) {
-        updateGridSizeSteppers(sender.value)
+        updateGridSizeSteppers(Int(sender.value))
         updateGridSizeText(Int(sender.value))
         engine.updateGridSize(Int(sender.value))
         }
         else {
             alertMessageOk(title: "oops ... Sorry!",message: "minmun Grid Size is 10x10")
-            updateGridSizeSteppers(10.0)
+            updateGridSizeSteppers(10)
             updateGridSizeText(10)
             engine.updateGridSize(10)
         }
@@ -62,16 +60,15 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     
     @IBAction func addNewGameButtonAction(_ sender: UIButton) {
-        gameTitlesData[0] = ["New Game"] + gameTitlesData[0]
+        //gameTitlesData[0] = ["New Game"] + gameTitlesData[0]
+        gameCellsData.insert(JsonLoadedGrid(gridSize: Int(gridColStepper.value), Title: "New Game", Content: [] ), at: gameCellsData.startIndex)
         self.gamesTableView.reloadData()
     }
     
-    
-    
     //updates rows and cols steppers values
-    private func updateGridSizeSteppers(_ size: Double) {
-        gridRowStepper.value = size
-        gridColStepper.value = size
+    private func updateGridSizeSteppers(_ size: Int) {
+        gridRowStepper.value = Double(size)
+        gridColStepper.value = Double(size)
     }
     
     //updates rows and cols text fields
@@ -84,21 +81,21 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     //MARK: TableView DataSource and Delegate
     
     func numberOfSections(in gamesTableView: UITableView) -> Int {
-        //return data.count
-        return gameTitlesData.count
+        //return gameTitlesData.count
+        //return gameCellsData.count
+        return 1
     }
     
     func tableView(_ gamesTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return data[section].count
-        return gameTitlesData[section].count
+        //return gameTitlesData[section].count
+        return gameCellsData.count
     }
     
     func tableView(_ gamesTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = "basic"
         let cell = gamesTableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         let label = cell.contentView.subviews.first as! UILabel
-        label.text = gameTitlesData[indexPath.section][indexPath.item]
-        
+        label.text = gameCellsData[indexPath.item].Title//gameTitlesData[indexPath.section][indexPath.item]
         return cell
     }
     
@@ -108,9 +105,9 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ gamesTableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            var newData = gameTitlesData[indexPath.section]
-            newData.remove(at: indexPath.row)
-            gameTitlesData[indexPath.section] = newData
+            //var newData = gameCellsData[indexPath.item]
+            gameCellsData.remove(at: indexPath.row)
+            //gameCellsData[indexPath.item] = newData
             gamesTableView.deleteRows(at: [indexPath], with: .automatic)
             gamesTableView.reloadData()
         }
@@ -119,22 +116,25 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = gamesTableView.indexPathForSelectedRow
         if let indexPath = indexPath {
-            let gameTitle = gameTitlesData[indexPath.section][indexPath.row]
+            //let gameTitle = gameTitlesData[indexPath.section][indexPath.row]
+            let jsonLoadedGridData = gameCellsData[indexPath.item]
             if let vc = segue.destination as? GridEditorViewController {
-                vc.gameTitle = gameTitle
-                vc.saveClosure = { newValue in
-                    self.gameTitlesData[indexPath.section][indexPath.row] = newValue
+              //  vc.gameTitle = gameTitle
+                vc.passedGridData = jsonLoadedGridData
+                vc.saveClosure = { updateData in
+                    //self.gameTitlesData[indexPath.section][indexPath.row] = newValue
+                    self.gameCellsData[indexPath.item] = updateData
                     self.gamesTableView.reloadData()
+                    self.updateGridSizeSteppers(updateData.gridSize)
+                    self.updateGridSizeText(updateData.gridSize)
                 }
             }
         }
     }
     
-    
     func fetchDate() {
         let fetcher = Fetcher()
         let finalProjectURL = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
-        
         let row = 0
         let col = 1
         
@@ -154,17 +154,15 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
                 let jsonDictionary = jsonArray[i] as! NSDictionary
                 let jsonTitle = jsonDictionary["title"] as! String
                 self.gameTitlesData.append([jsonTitle])
+                var tempLoadedGridData = JsonLoadedGrid()
+                tempLoadedGridData.Title = jsonTitle
                 let jsonContents = jsonDictionary["contents"] as! [[Int]]
-                print(jsonContents[0])
                 (0..<jsonContents.count).forEach { j in
-                    self.gameCellsData.append([cell[row], cell[col]])
+                    let cell = jsonContents[j]
+                    tempLoadedGridData.Content.append([cell[row], cell[col]])
                 }
+                self.gameCellsData.append(tempLoadedGridData)
             }
-            
-            
-            //let jsonDictionary = jsonArray[0] as! NSDictionary
-            //let jsonTitle = jsonDictionary["title"] as! String
-            //let jsonContents = jsonDictionary["contents"] as! [[Int]]
 
             OperationQueue.main.addOperation {
                 self.gamesTableView.reloadData()

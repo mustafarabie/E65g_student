@@ -24,6 +24,10 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
         gridView.grid = self
         gridView.gridSize = engine.cols
         
+        if engine.cols > 20 {
+            gridView.gridWidth = 0.1
+        }
+        
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")
         nc.addObserver(

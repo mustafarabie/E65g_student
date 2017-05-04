@@ -376,7 +376,7 @@
                                         </variation>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.7725490196" green="0.73333333329999995" blue="0.87843137250000003" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.77254901960784317" green="0.73333333333333328" blue="0.8784313725490196" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="0ta-3h-acj" firstAttribute="leading" secondItem="CAK-sR-tnc" secondAttribute="trailing" constant="8" id="0cy-nQ-X7g"/>
                                     <constraint firstItem="7Li-L0-B0N" firstAttribute="centerY" secondItem="beN-xN-E1X" secondAttribute="centerY" id="D0k-ux-RF7"/>
@@ -402,35 +402,35 @@
                                         <exclude reference="P2w-9p-mGI"/>
                                         <exclude reference="gaT-1J-GOu"/>
                                         <exclude reference="tRd-Tn-jDh"/>
+                                        <exclude reference="g6O-0I-ah8"/>
+                                        <exclude reference="hCA-OK-XH1"/>
+                                        <exclude reference="xg0-Sk-JRG"/>
                                         <exclude reference="0cy-nQ-X7g"/>
                                         <exclude reference="Tag-by-omg"/>
                                         <exclude reference="Y98-Jk-Bhe"/>
                                         <exclude reference="bVJ-1p-BB4"/>
                                         <exclude reference="enq-Ce-XO6"/>
                                         <exclude reference="f7d-Fh-jsq"/>
-                                        <exclude reference="g6O-0I-ah8"/>
-                                        <exclude reference="hCA-OK-XH1"/>
-                                        <exclude reference="xg0-Sk-JRG"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
                                     <mask key="constraints">
                                         <include reference="gaT-1J-GOu"/>
                                         <include reference="tRd-Tn-jDh"/>
+                                        <include reference="xg0-Sk-JRG"/>
                                         <exclude reference="0cy-nQ-X7g"/>
                                         <include reference="enq-Ce-XO6"/>
                                         <exclude reference="f7d-Fh-jsq"/>
-                                        <include reference="xg0-Sk-JRG"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <include reference="P2w-9p-mGI"/>
+                                        <include reference="g6O-0I-ah8"/>
+                                        <include reference="hCA-OK-XH1"/>
                                         <include reference="Tag-by-omg"/>
                                         <include reference="Y98-Jk-Bhe"/>
                                         <include reference="bVJ-1p-BB4"/>
-                                        <include reference="g6O-0I-ah8"/>
-                                        <include reference="hCA-OK-XH1"/>
                                     </mask>
                                 </variation>
                             </view>

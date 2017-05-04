@@ -11,6 +11,12 @@ import Foundation
 //typealias to the save the current gird state
 public typealias GridCurrentState = [String : [[Int]]]
 
+public struct JsonLoadedGrid {
+    var gridSize = 0
+    var Title = String()
+    var Content = [[Int]]()
+}
+
 class StandardEngine: EngineProtocol {
 
     //Lazy Singleton
@@ -25,7 +31,7 @@ class StandardEngine: EngineProtocol {
     var totalBorn: Int;
     var totalDied: Int;
     var totalEmpty: Int;
-    var tempRefreshRate = 0.0
+    var tempRefreshRate = 1/5.0
     //Bool variable to indicate weather the statistics data was loaded from saved data, in order not to update on 1st load
     var isJustLoaded : Bool = false
     
@@ -164,17 +170,19 @@ class StandardEngine: EngineProtocol {
         //set engine cols to the loaded gridSize cols
         StandardEngine.gridEngine.cols = grid.size.cols
         
+        
         //loop through the alive cells and set state to the grid
         (0..<aliveData!.count).forEach { i in
             let cell = aliveData![i]
             grid[cell[row], cell[col]] = .alive
         }
-        
+ 
         //loop through the born cells and set state to the grid
         (0..<bornData!.count).forEach { i in
             let cell = bornData![i]
-            grid[cell[row], cell[col]] = .born
+            grid[cell.first!, cell.last!] = .born
         }
+        
         
         //loop through the died cells and set state to the grid
         (0..<diedData!.count).forEach { i in

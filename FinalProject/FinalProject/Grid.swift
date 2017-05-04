@@ -104,6 +104,19 @@ extension GridProtocol {
         let defaults = UserDefaults.standard
         defaults.set(currentGridState, forKey: "savedSession")
     }
+    
+    func getAlivePositions() -> [[Int]] {
+        var alivePositions = [[Int]]()
+        lazyPositions(self.size).forEach {
+            switch self[$0.row, $0.col] {
+            case .alive:
+                alivePositions = (alivePositions ?? []) + [[$0.row, $0.col]]
+            default:
+                ()
+            }
+        }
+        return alivePositions
+    }
 }
 
 public struct Grid: GridProtocol {
