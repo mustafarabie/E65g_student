@@ -9,13 +9,13 @@
 import UIKit
 
 class StatisticsViewController: UIViewController {
-
+    
     
     @IBOutlet weak var aliveLabel: UILabel!
     @IBOutlet weak var deadLabel: UILabel!
     @IBOutlet weak var bornLabel: UILabel!
     @IBOutlet weak var emptyLabel: UILabel!
- 
+    
     var engine : StandardEngine!
     
     override func viewDidLoad() {
@@ -57,7 +57,7 @@ class StatisticsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 

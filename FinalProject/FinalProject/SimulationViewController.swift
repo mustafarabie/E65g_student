@@ -18,16 +18,18 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         engine = StandardEngine.gridEngine
         engine.delegate = self
         gridView.grid = self
         gridView.gridSize = engine.cols
         
+        //make the gridlines thin for better visibility if gridSize is > 20x20
         if engine.cols > 20 {
             gridView.gridWidth = 0.1
         }
         
+        //listen to notifications
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")
         nc.addObserver(
@@ -53,7 +55,6 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     }
     @IBAction func saveStateButton(_ sender: UIButton) {
         engine.saveCurrnetGridState(engine.grid)
-        engine.getAllAlive()
     }
     
     public subscript (row: Int, col: Int) -> CellState {

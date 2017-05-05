@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable class GridView: UIView {
-
+    
     @IBInspectable var gridSize = 10
     
     @IBInspectable var livingColor = UIColor.black
@@ -48,12 +48,12 @@ import UIKit
         }
     }
     
-    /* 
-       name   : drawLine
-       input  : CGPoint start
-                CGPoint end
-       summary: draws a line between the 2, using the color specified by gridColor
-    */
+    /*
+     name   : drawLine
+     input  : CGPoint start
+     CGPoint end
+     summary: draws a line between the 2, using the color specified by gridColor
+     */
     func drawLine(start:CGPoint, end: CGPoint) {
         let path = UIBezierPath()
         
@@ -93,20 +93,20 @@ import UIKit
                     width: size.width - 4.0,
                     height: size.height - 4.0
                 )
-
+                
                 
                 let ovalRect = CGRect( origin: ovalOrigin, size: ovalSize )
                 if let grid = self.grid {
                     switch grid[(i,j)]
                     {
-                        //draw live circles
-                        case .alive: drawOval(ovalRect, livingColor)
-                        //draw born circles
-                        case .born: drawOval(ovalRect, bornColor)
-                        //draw died circles
-                        case .died: drawOval(ovalRect, diedColor)
-                        //draw empty circles
-                        case .empty: drawOval(ovalRect, emptyColor)
+                    //draw live circles
+                    case .alive: drawOval(ovalRect, livingColor)
+                    //draw born circles
+                    case .born: drawOval(ovalRect, bornColor)
+                    //draw died circles
+                    case .died: drawOval(ovalRect, diedColor)
+                    //draw empty circles
+                    case .empty: drawOval(ovalRect, emptyColor)
                     }
                 }
             }

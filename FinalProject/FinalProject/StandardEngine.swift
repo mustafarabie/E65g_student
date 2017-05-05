@@ -18,7 +18,7 @@ public struct JsonLoadedGrid {
 }
 
 class StandardEngine: EngineProtocol {
-
+    
     //Lazy Singleton
     static var gridEngine : StandardEngine = StandardEngine(rows: 10, cols: 10)
     
@@ -54,7 +54,7 @@ class StandardEngine: EngineProtocol {
         }
     }
     
-       required init(rows: Int, cols: Int) {
+    required init(rows: Int, cols: Int) {
         self.rows = rows
         self.cols = cols
         self.grid = Grid(rows, cols)
@@ -78,12 +78,14 @@ class StandardEngine: EngineProtocol {
         self.cols = size
         grid = Grid(size, size)
         resetStats()
-        delegate?.engineDidUpdate(withGrid: grid)
         updateNotification()
     }
     
-    func updateGrid() {
-        delegate?.engineDidUpdate(withGrid: grid)
+    func updateGrid(_ updatedGrid: GridProtocol) {
+        self.rows = updatedGrid.size.rows
+        self.cols = updatedGrid.size.cols
+        self.grid = updatedGrid
+        resetStats()
         updateNotification()
     }
     
@@ -91,7 +93,6 @@ class StandardEngine: EngineProtocol {
     func resetGrid() {
         grid = Grid(self.rows, self.cols)
         resetStats()
-        delegate?.engineDidUpdate(withGrid: grid)
         updateNotification()
     }
     
@@ -99,13 +100,13 @@ class StandardEngine: EngineProtocol {
     func step() -> GridProtocol {
         let nextGrid = grid.next()
         grid = nextGrid
-        delegate?.engineDidUpdate(withGrid: grid)
         updateNotification()
         return grid
     }
     
     //send a notification when an update to the Grid happens
     func updateNotification(){
+        delegate?.engineDidUpdate(withGrid: grid)
         let nc = NotificationCenter.default
         let name = Notification.Name(rawValue: "EngineUpdate")
         let n = Notification(name: name,
@@ -140,10 +141,6 @@ class StandardEngine: EngineProtocol {
         grid.setConfiguration(currentStatistics: [totalAlive, totalDied, totalBorn, totalEmpty])
     }
     
-    func getAllAlive() {
-        let x = grid.getAlivePositions()
-    }
-    
     //load saved grid state
     func loadSavedGridState(_ loadedGridData: GridCurrentState)
     {
@@ -157,9 +154,6 @@ class StandardEngine: EngineProtocol {
         let bornData = loadedGridData["born"]
         //extract died cells array from loadedGridData
         let diedData = loadedGridData["died"]
-        
-        let row = 0
-        let col = 1
         
         //set statistics of loaded Grid State
         totalAlive = statisticsData![0][0]
@@ -179,24 +173,12 @@ class StandardEngine: EngineProtocol {
         //set engine cols to the loaded gridSize cols
         StandardEngine.gridEngine.cols = grid.size.cols
         
-        
         //loop through the alive cells and set state to the grid
-        (0..<aliveData!.count).forEach { i in
-            let cell = aliveData![i]
-            grid[cell[row], cell[col]] = .alive
-        }
- 
-        //loop through the born cells and set state to the grid
-        (0..<bornData!.count).forEach { i in
-            let cell = bornData![i]
-            grid[cell.first!, cell.last!] = .born
-        }
+        (0..<aliveData!.count).forEach { grid[aliveData![$0].first!, aliveData![$0].last!] = .alive }
         
+        //loop through the born cells and set state to the grid
+        (0..<bornData!.count).forEach { grid[bornData![$0].first!, bornData![$0].last!] = .born }
         
         //loop through the died cells and set state to the grid
-        (0..<diedData!.count).forEach { i in
-            let cell = diedData![i]
-            grid[cell[row], cell[col]] = .died
-        }
-    }
+        (0..<diedData!.count).forEach { grid[diedData![$0].first!, diedData![$0].last!] = .died }    }
 }

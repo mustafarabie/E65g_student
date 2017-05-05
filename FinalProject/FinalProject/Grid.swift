@@ -83,7 +83,7 @@ extension GridProtocol {
             "born"       : [],
             "died"       : []
         ]
-
+        
         currentGridState["statistics"]!.append([statisticsData[0], statisticsData[1], statisticsData[2], statisticsData[3]])
         currentGridState["gridSize"]!.append([size.rows, size.cols])
         

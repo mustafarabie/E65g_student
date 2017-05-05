@@ -9,18 +9,13 @@
 import UIKit
 
 class GridEditorViewController: UIViewController, GridViewDataSource, EngineDelegate {
-
+    
     @IBOutlet weak var gridView: GridView!
-    @IBOutlet weak var gameTitleText: UITextField!
+    @IBOutlet weak var gameTitleTextField: UITextField!
     
-    //var saveClosure: ((String) -> Void)?
     var saveClosure: ((JsonLoadedGrid) -> Void)?
-    //var gameTitle: String?
     var passedGridData : JsonLoadedGrid?
-
-    
-    var engine : StandardEngine = StandardEngine(rows: 10, cols: 10)
-    
+    var grid : Grid!
     
     let row = 0
     let col = 1
@@ -29,57 +24,39 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
         
-        /*if (passedGridData?.Content.count != 0) {
-            gameTitleText.text = passedGridData?.Title
-            loadGrid(passedGridData!)
-        }*/
-        gameTitleText.text = passedGridData?.Title
+        gameTitleTextField.text = passedGridData?.Title
+        grid = Grid((passedGridData!.gridSize), passedGridData!.gridSize)
         loadGrid(passedGridData!)
-        engine.delegate = self
         gridView.grid = self
-        gridView.gridSize = engine.cols
+        gridView.gridSize = (passedGridData?.gridSize)!
     }
-
+    
     
     func engineDidUpdate(withGrid: GridProtocol) {
         self.gridView.setNeedsDisplay()
     }
     
     func loadGrid(_ grid: JsonLoadedGrid) {
-        /*var newGridSize = 0
-        if grid.gridSize == 0 {
-            newGridSize = getMaxElement(grid.Content) * 2
-        }
-        else {
-            newGridSize = grid.gridSize
-        }*/
-            
-        engine.updateGridSize(grid.gridSize)
-        gridView.gridSize = engine.cols
         
-        (0..<grid.Content.count).forEach { element in
-            let cell = grid.Content[element]
-            engine.grid[cell[row], cell[col]] = .alive
+        (0..<grid.Content.count).forEach { self.grid?[grid.Content[$0].first!, grid.Content[$0].last!] = .alive }
+        
+        //make the gridlines thin for better visibility if gridSize is > 20x20
+        if grid.gridSize > 20 {
+            gridView.gridWidth = 0.1
         }
-        gridView.gridWidth = 0.1
         gridView.setNeedsDisplay()
     }
     
-    //gets the max element in the array
-    func getMaxElement (_ gridCells: [[Int]]) -> Int {
-        let flatArray = gridCells.joined()
-        return flatArray.max()!
-    }
-    
     @IBAction func barButtonSave(_ sender: UIBarButtonItem) {
-
-        passedGridData?.gridSize = engine.cols
-        passedGridData?.Content = engine.grid.getAlivePositions()
-        passedGridData?.Title = gameTitleText.text!
         
-        StandardEngine.gridEngine = engine
-        StandardEngine.gridEngine.updateGrid()
-    
+        //set values to pass back
+        passedGridData?.gridSize = (self.grid?.size.rows)!
+        passedGridData?.Content = (self.grid?.getAlivePositions())!
+        passedGridData?.Title = gameTitleTextField.text!
+        
+        //set current grid changes to the Engine's grid
+        StandardEngine.gridEngine.updateGrid(grid!)
+        
         if let updateData = passedGridData,
             let saveClosure = saveClosure {
             saveClosure(updateData)
@@ -88,8 +65,8 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     }
     
     public subscript (row: Int, col: Int) -> CellState {
-        get { return engine.grid[row,col] }
-        set { engine.grid[row,col] = newValue }
+        get { return self.grid![row,col] }
+        set { self.grid?[row,col] = newValue }
     }
     
 }

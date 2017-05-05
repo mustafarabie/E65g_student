@@ -9,7 +9,7 @@
 import UIKit
 
 class InstrumentationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     
     @IBOutlet weak var updateSlider: UISlider!
     @IBOutlet weak var gridRowLabel: UILabel!
@@ -19,8 +19,6 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var gamesTableView: UITableView!
     
     var engine : StandardEngine!
-    
-    var gameTitlesData = [[String]]()
     var gameCellsData = [JsonLoadedGrid]()
     
     override func viewDidLoad() {
@@ -35,11 +33,12 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: Actions
     @IBAction func changeGridSize(_ sender: UIStepper) {
         if(sender.value >= 10) {
             updateGridSizeSteppers(Int(sender.value))
@@ -60,7 +59,6 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     
     @IBAction func addNewGameButtonAction(_ sender: UIButton) {
-        //gameTitlesData[0] = ["New Game"] + gameTitlesData[0]
         gameCellsData.insert(JsonLoadedGrid(gridSize: Int(gridColStepper.value), Title: "New Game", Content: [] ), at: gameCellsData.startIndex)
         self.gamesTableView.reloadData()
     }
@@ -79,15 +77,11 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     
     //MARK: TableView DataSource and Delegate
-    
     func numberOfSections(in gamesTableView: UITableView) -> Int {
-        //return gameTitlesData.count
-        //return gameCellsData.count
         return 1
     }
     
     func tableView(_ gamesTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return gameTitlesData[section].count
         return gameCellsData.count
     }
     
@@ -99,15 +93,9 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         return cell
     }
     
-    /*func tableView(_ gamesTableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Games" //sectionHeaders[section]
-    }*/
-    
     func tableView(_ gamesTableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            //var newData = gameCellsData[indexPath.item]
             gameCellsData.remove(at: indexPath.row)
-            //gameCellsData[indexPath.item] = newData
             gamesTableView.deleteRows(at: [indexPath], with: .automatic)
             gamesTableView.reloadData()
         }
@@ -132,8 +120,6 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     func fetchDate() {
         let fetcher = Fetcher()
         let finalProjectURL = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
-        let row = 0
-        let col = 1
         
         fetcher.fetchJSON(url: URL(string:finalProjectURL)!) { (json: Any?, message: String?) in
             guard message == nil else {
@@ -144,24 +130,21 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
                 print("no json")
                 return
             }
-
+            
             let jsonArray = json as! NSArray
             
             (0..<jsonArray.count).forEach { i in
                 let jsonDictionary = jsonArray[i] as! NSDictionary
                 let jsonTitle = jsonDictionary["title"] as! String
-                //self.gameTitlesData.append([jsonTitle])
                 var tempLoadedGridData = JsonLoadedGrid()
                 tempLoadedGridData.Title = jsonTitle
                 let jsonContents = jsonDictionary["contents"] as! [[Int]]
-                (0..<jsonContents.count).forEach { j in
-                    let cell = jsonContents[j]
-                    tempLoadedGridData.Content.append([cell[row], cell[col]])
-                }
+                (0..<jsonContents.count).forEach { tempLoadedGridData.Content.append([jsonContents[$0].first!, jsonContents[$0].last!]) }
+                
                 tempLoadedGridData.gridSize = self.getGridSize(tempLoadedGridData.Content)
                 self.gameCellsData.append(tempLoadedGridData)
             }
-
+            
             OperationQueue.main.addOperation {
                 self.gamesTableView.reloadData()
             }
