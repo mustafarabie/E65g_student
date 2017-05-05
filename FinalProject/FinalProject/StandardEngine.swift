@@ -13,8 +13,8 @@ public typealias GridCurrentState = [String : [[Int]]]
 
 public struct JsonLoadedGrid {
     var gridSize = 0
-    var Title = String()
-    var Content = [[Int]]()
+    var title = String()
+    var content = [[Int]]()
 }
 
 class StandardEngine: EngineProtocol {

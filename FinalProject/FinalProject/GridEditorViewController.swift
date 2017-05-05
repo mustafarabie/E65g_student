@@ -24,7 +24,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
         
-        gameTitleTextField.text = passedGridData?.Title
+        gameTitleTextField.text = passedGridData?.title
         grid = Grid((passedGridData!.gridSize), passedGridData!.gridSize)
         loadGrid(passedGridData!)
         gridView.grid = self
@@ -38,7 +38,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     
     func loadGrid(_ grid: JsonLoadedGrid) {
         
-        (0..<grid.Content.count).forEach { self.grid?[grid.Content[$0].first!, grid.Content[$0].last!] = .alive }
+        (0..<grid.content.count).forEach { self.grid?[grid.content[$0].first!, grid.content[$0].last!] = .alive }
         
         //make the gridlines thin for better visibility if gridSize is > 20x20
         if grid.gridSize > 20 {
@@ -51,8 +51,8 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         
         //set values to pass back
         passedGridData?.gridSize = (self.grid?.size.rows)!
-        passedGridData?.Content = (self.grid?.getAlivePositions())!
-        passedGridData?.Title = gameTitleTextField.text!
+        passedGridData?.content = (self.grid?.getAlivePositions())!
+        passedGridData?.title = gameTitleTextField.text!
         
         //set current grid changes to the Engine's grid
         StandardEngine.gridEngine.updateGrid(grid!)
@@ -60,7 +60,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         if let updateData = passedGridData,
             let saveClosure = saveClosure {
             saveClosure(updateData)
-            navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

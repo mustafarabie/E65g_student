@@ -59,7 +59,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     
     @IBAction func addNewGameButtonAction(_ sender: UIButton) {
-        gameCellsData.insert(JsonLoadedGrid(gridSize: Int(gridColStepper.value), Title: "New Game", Content: [] ), at: gameCellsData.startIndex)
+        gameCellsData.insert(JsonLoadedGrid(gridSize: Int(gridColStepper.value), title: "New Game", content: [] ), at: gameCellsData.startIndex)
         self.gamesTableView.reloadData()
     }
     
@@ -89,7 +89,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         let identifier = "basic"
         let cell = gamesTableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         let label = cell.contentView.subviews.first as! UILabel
-        label.text = gameCellsData[indexPath.item].Title//gameTitlesData[indexPath.section][indexPath.item]
+        label.text = gameCellsData[indexPath.item].title//gameTitlesData[indexPath.section][indexPath.item]
         return cell
     }
     
@@ -137,11 +137,11 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
                 let jsonDictionary = jsonArray[i] as! NSDictionary
                 let jsonTitle = jsonDictionary["title"] as! String
                 var tempLoadedGridData = JsonLoadedGrid()
-                tempLoadedGridData.Title = jsonTitle
+                tempLoadedGridData.title = jsonTitle
                 let jsonContents = jsonDictionary["contents"] as! [[Int]]
-                (0..<jsonContents.count).forEach { tempLoadedGridData.Content.append([jsonContents[$0].first!, jsonContents[$0].last!]) }
+                (0..<jsonContents.count).forEach { tempLoadedGridData.content.append([jsonContents[$0].first!, jsonContents[$0].last!]) }
                 
-                tempLoadedGridData.gridSize = self.getGridSize(tempLoadedGridData.Content)
+                tempLoadedGridData.gridSize = self.getGridSize(tempLoadedGridData.content)
                 self.gameCellsData.append(tempLoadedGridData)
             }
             
