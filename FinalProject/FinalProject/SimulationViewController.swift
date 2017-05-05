@@ -53,6 +53,7 @@ class SimulationViewController: UIViewController, GridViewDataSource, EngineDele
     }
     @IBAction func saveStateButton(_ sender: UIButton) {
         engine.saveCurrnetGridState(engine.grid)
+        engine.getAllAlive()
     }
     
     public subscript (row: Int, col: Int) -> CellState {

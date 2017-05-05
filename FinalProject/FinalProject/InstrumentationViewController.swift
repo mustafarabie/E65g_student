@@ -42,9 +42,9 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     
     @IBAction func changeGridSize(_ sender: UIStepper) {
         if(sender.value >= 10) {
-        updateGridSizeSteppers(Int(sender.value))
-        updateGridSizeText(Int(sender.value))
-        engine.updateGridSize(Int(sender.value))
+            updateGridSizeSteppers(Int(sender.value))
+            updateGridSizeText(Int(sender.value))
+            engine.updateGridSize(Int(sender.value))
         }
         else {
             alertMessageOk(title: "oops ... Sorry!",message: "minmun Grid Size is 10x10")
@@ -116,13 +116,10 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = gamesTableView.indexPathForSelectedRow
         if let indexPath = indexPath {
-            //let gameTitle = gameTitlesData[indexPath.section][indexPath.row]
             let jsonLoadedGridData = gameCellsData[indexPath.item]
             if let vc = segue.destination as? GridEditorViewController {
-              //  vc.gameTitle = gameTitle
                 vc.passedGridData = jsonLoadedGridData
                 vc.saveClosure = { updateData in
-                    //self.gameTitlesData[indexPath.section][indexPath.row] = newValue
                     self.gameCellsData[indexPath.item] = updateData
                     self.gamesTableView.reloadData()
                     self.updateGridSizeSteppers(updateData.gridSize)
@@ -153,7 +150,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
             (0..<jsonArray.count).forEach { i in
                 let jsonDictionary = jsonArray[i] as! NSDictionary
                 let jsonTitle = jsonDictionary["title"] as! String
-                self.gameTitlesData.append([jsonTitle])
+                //self.gameTitlesData.append([jsonTitle])
                 var tempLoadedGridData = JsonLoadedGrid()
                 tempLoadedGridData.Title = jsonTitle
                 let jsonContents = jsonDictionary["contents"] as! [[Int]]
@@ -161,6 +158,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
                     let cell = jsonContents[j]
                     tempLoadedGridData.Content.append([cell[row], cell[col]])
                 }
+                tempLoadedGridData.gridSize = self.getGridSize(tempLoadedGridData.Content)
                 self.gameCellsData.append(tempLoadedGridData)
             }
 
@@ -170,6 +168,13 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    //gets the new gridSize
+    func getGridSize (_ gridCells: [[Int]]) -> Int {
+        let flatArray = gridCells.joined()
+        let maxValue = flatArray.max()! * 2
+        //return the gridSize rounded up to the 10th interval
+        return Int(10 * (Double(maxValue)/10.0).rounded(.up))
+    }
     
     //MARK: AlertController Handling
     func alertMessageOk(title: String, message: String) {

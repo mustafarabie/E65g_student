@@ -110,7 +110,7 @@ extension GridProtocol {
         lazyPositions(self.size).forEach {
             switch self[$0.row, $0.col] {
             case .alive:
-                alivePositions = (alivePositions ?? []) + [[$0.row, $0.col]]
+                alivePositions = (alivePositions ) + [[$0.row, $0.col]]
             default:
                 ()
             }

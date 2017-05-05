@@ -82,6 +82,11 @@ class StandardEngine: EngineProtocol {
         updateNotification()
     }
     
+    func updateGrid() {
+        delegate?.engineDidUpdate(withGrid: grid)
+        updateNotification()
+    }
+    
     //reset Grid
     func resetGrid() {
         grid = Grid(self.rows, self.cols)
@@ -133,6 +138,10 @@ class StandardEngine: EngineProtocol {
     //save current state
     func saveCurrnetGridState(_ grid: GridProtocol) {
         grid.setConfiguration(currentStatistics: [totalAlive, totalDied, totalBorn, totalEmpty])
+    }
+    
+    func getAllAlive() {
+        let x = grid.getAlivePositions()
     }
     
     //load saved grid state

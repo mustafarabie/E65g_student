@@ -46,15 +46,15 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
     }
     
     func loadGrid(_ grid: JsonLoadedGrid) {
-        var maxValue = 0
+        /*var newGridSize = 0
         if grid.gridSize == 0 {
-            maxValue = getMaxElement(grid.Content) * 2
+            newGridSize = getMaxElement(grid.Content) * 2
         }
         else {
-            maxValue = grid.gridSize
-        }
+            newGridSize = grid.gridSize
+        }*/
             
-        engine.updateGridSize(maxValue)
+        engine.updateGridSize(grid.gridSize)
         gridView.gridSize = engine.cols
         
         (0..<grid.Content.count).forEach { element in
@@ -65,6 +65,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         gridView.setNeedsDisplay()
     }
     
+    //gets the max element in the array
     func getMaxElement (_ gridCells: [[Int]]) -> Int {
         let flatArray = gridCells.joined()
         return flatArray.max()!
@@ -77,7 +78,8 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         passedGridData?.Title = gameTitleText.text!
         
         StandardEngine.gridEngine = engine
-        
+        StandardEngine.gridEngine.updateGrid()
+    
         if let updateData = passedGridData,
             let saveClosure = saveClosure {
             saveClosure(updateData)
