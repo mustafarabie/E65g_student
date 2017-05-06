@@ -21,12 +21,25 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
     var engine : StandardEngine!
     var gameCellsData = [JsonLoadedGrid]()
     
+    //Spinner code from https://github.com/angeldev/iOSDev/tree/master/activityIndicatorOverUITableView
+    /// View which contains the loading text and the spinner
+    let loadingView = UIView()
+    
+    /// Spinner shown during load the TableView
+    let spinner = UIActivityIndicatorView()
+    
+    /// Text shown during load the TableView
+    let loadingLabel = UILabel()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         engine = StandardEngine.gridEngine
         updateGridSizeSteppers(engine.rows)
         updateGridSizeText(engine.rows)
         engine.tempRefreshRate = Double(1/updateSlider.value)
+        //show spinner
+        setLoadingScreen()
         fetchDate()
     }
     
@@ -147,6 +160,7 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
             
             OperationQueue.main.addOperation {
                 self.gamesTableView.reloadData()
+                self.removeLoadingScreen()
             }
         }
     }
@@ -165,6 +179,44 @@ class InstrumentationViewController: UIViewController, UITableViewDelegate, UITa
         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+    }
+    
+    // Set the activity indicator into the main view
+    fileprivate func setLoadingScreen() {
+        
+        // Sets the view which contains the loading text and the spinner
+        let width: CGFloat = 120
+        let height: CGFloat = 30
+        let x = (self.gamesTableView.frame.width / 2) - (width / 2)
+        let y = (self.gamesTableView.frame.height / 2) - (height / 2) - (self.navigationController?.navigationBar.frame.height)!
+        loadingView.frame = CGRect(x: x, y: y, width: width, height: height)
+        
+        // Sets loading text
+        self.loadingLabel.textColor = UIColor.gray
+        self.loadingLabel.textAlignment = NSTextAlignment.center
+        self.loadingLabel.text = "Fetching Data..."
+        self.loadingLabel.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
+        
+        // Sets spinner
+        self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        self.spinner.startAnimating()
+        
+        // Adds text and spinner to the view
+        loadingView.addSubview(self.spinner)
+        loadingView.addSubview(self.loadingLabel)
+        
+        self.gamesTableView.addSubview(loadingView)
+        
+    }
+    
+    // Remove the activity indicator from the main view
+    fileprivate func removeLoadingScreen() {
+        
+        // Hides and stops the text and the spinner
+        self.spinner.stopAnimating()
+        self.loadingLabel.isHidden = true
+        
     }
 }
 
