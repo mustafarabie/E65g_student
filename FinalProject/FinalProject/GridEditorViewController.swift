@@ -60,7 +60,7 @@ class GridEditorViewController: UIViewController, GridViewDataSource, EngineDele
         if let updateData = passedGridData,
             let saveClosure = saveClosure {
             saveClosure(updateData)
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
     }
     

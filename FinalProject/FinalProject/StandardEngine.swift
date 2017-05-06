@@ -142,8 +142,7 @@ class StandardEngine: EngineProtocol {
     }
     
     //load saved grid state
-    func loadSavedGridState(_ loadedGridData: GridCurrentState)
-    {
+    func loadSavedGridState(_ loadedGridData: GridCurrentState) {
         //extract statistics from loadedGridData
         let statisticsData = loadedGridData["statistics"]
         //extract gridSize from loadedGridData
@@ -180,5 +179,6 @@ class StandardEngine: EngineProtocol {
         (0..<bornData!.count).forEach { grid[bornData![$0].first!, bornData![$0].last!] = .born }
         
         //loop through the died cells and set state to the grid
-        (0..<diedData!.count).forEach { grid[diedData![$0].first!, diedData![$0].last!] = .died }    }
+        (0..<diedData!.count).forEach { grid[diedData![$0].first!, diedData![$0].last!] = .died }
+    }
 }
